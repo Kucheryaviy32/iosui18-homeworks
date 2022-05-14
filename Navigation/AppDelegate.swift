@@ -16,16 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let feedNavigationVC = UINavigationController(rootViewController: feedViewController)
         
         let tabBarController = UITabBarController()
-        
+                    
         profileNavigationVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
        
         feedNavigationVC.tabBarItem = UITabBarItem(title: "Новости", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
         
         profileNavigationVC.view.backgroundColor = .white
-
         feedNavigationVC.view.backgroundColor = .cyan
         
-        tabBarController.viewControllers = [feedNavigationVC, profileNavigationVC]
+        tabBarController.viewControllers = [profileNavigationVC, feedNavigationVC]
 
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
