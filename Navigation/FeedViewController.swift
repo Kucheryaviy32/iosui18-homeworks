@@ -44,7 +44,6 @@ class FeedViewController: UIViewController {
         postStackView.insertArrangedSubview(firstButton, at: 0)
         postStackView.insertArrangedSubview(secondButton, at: 1)
         postStackView.autoresizesSubviews = true
-
         postStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

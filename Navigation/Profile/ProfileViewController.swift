@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
-
+        
         
         NSLayoutConstraint.activate([
             profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -41,10 +41,10 @@ class ProfileViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         
         super.viewWillLayoutSubviews()
-
+        
         profileHeaderView.frame = view.frame
         
-       
+        
     }
     
     
