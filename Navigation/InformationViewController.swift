@@ -21,6 +21,7 @@ class InformationViewController: UIViewController {
     
     
     @objc func alert() {
+        
         let alert = UIAlertController(title: "Тревожное сообщение", message: "При отправке запроса произошла ошибка", preferredStyle: .alert)
         let firstAlertAction = UIAlertAction (title: "FirstAlertAction", style: .default) {_ in print ("First Alert Action")}
         let secondAlertAction = UIAlertAction (title: "SecondAlertAction", style: .default) {_ in print ("Second Alert Action")}
