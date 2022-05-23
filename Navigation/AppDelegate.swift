@@ -24,11 +24,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileNavigationVC.view.backgroundColor = .white
         feedNavigationVC.view.backgroundColor = .cyan
         
-        tabBarController.viewControllers = [profileNavigationVC, feedNavigationVC]
+        tabBarController.viewControllers = [feedNavigationVC, profileNavigationVC]
 
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+
+            let navBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithDefaultBackground()
+            UINavigationBar.appearance().standardAppearance = navBarAppearance
+        
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+            }
+        }
         
         return true
     }
