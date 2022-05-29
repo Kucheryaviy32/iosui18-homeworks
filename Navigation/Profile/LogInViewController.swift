@@ -12,7 +12,6 @@ class LogInViewController: UIViewController {
     
     lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
-        
         return scrollView
     }()
     
@@ -76,7 +75,6 @@ class LogInViewController: UIViewController {
         logInButton.setBackgroundImage(anotherstateImage, for: .selected)
         logInButton.setBackgroundImage(anotherstateImage, for: .highlighted)
         logInButton.setBackgroundImage(anotherstateImage, for: .disabled)
-        
         logInButton.layer.cornerRadius = 10
         logInButton.layer.masksToBounds = true
         logInButton.addTarget(self, action: #selector(inButton), for: .touchUpInside)
@@ -87,8 +85,6 @@ class LogInViewController: UIViewController {
         let viewController = ProfileViewController(nibName: nil, bundle: nil)
         self.navigationController?.pushViewController(viewController, animated: true)
         self.navigationController?.navigationBar.isHidden = false
-        
-        
     }
     
     override func viewDidLoad() {
