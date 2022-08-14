@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 
-struct Post {
-    var author : String
-    var description : String
-    var image: UIImage
-    var likes: Int
-    var views: Int
+public struct Post {
+   public var author : String
+    public var description : String
+    public  var image: UIImage
+    public  var likes: Int
+    public  var views: Int
     
-    static func postFeed() -> [Post] {
+   public static func postFeed() -> [Post] {
         var post = [Post]()
         post.append(Post(author: "Морти", description: "Ого, где это мы, Рик?", image: UIImage(named: "morty")!, likes: 132, views: 1231))
         post.append(Post(author: "Гомер", description: "Нельзя строить отношения на лжи. Ложь приходит потом.", image: UIImage(named: "gomer")!, likes: 132, views: 1412))
