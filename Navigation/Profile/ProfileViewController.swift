@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
         #if DEBUG
         profileTableView.backgroundColor = .red
         #else
-        profileTableView.backgroundColor = .blue
+        profileTableView.backgroundColor = .white
         #endif
         
         super.viewDidLoad()
