@@ -80,7 +80,6 @@ class ProfileHeaderView: UIView {
         addSubview(statusButton)
         statusButton.translatesAutoresizingMaskIntoConstraints = false
         
-//        NSLayoutConstraint.activate([
             
         profileImageView.snp.makeConstraints { maker in
             maker.top.equalToSuperview().inset(16)
@@ -109,25 +108,7 @@ class ProfileHeaderView: UIView {
             make.leading.equalTo(profileImageView.snp_trailingMargin).inset(-16)
             make.bottom.equalTo(statusTextField.snp_topMargin).inset(-16)
         }
-//            profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-//            profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-//            profileImageView.widthAnchor.constraint(equalToConstant: 100),
-//            profileImageView.heightAnchor.constraint(equalToConstant: 100),
-//            userNameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
-//            userNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
-//            userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-//            statusButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 46),
-//            statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-//            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-//            statusButton.heightAnchor.constraint(equalToConstant: 50),
-//            statusTextField.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
-//            statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -34),
-//            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-//            statusTextField.heightAnchor.constraint(equalToConstant: 40),
-//            statusLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
-//            statusLabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -16),
-//            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
-//        ])
+
     }
     
     required init?(coder: NSCoder) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
@@ -88,6 +89,11 @@ class PostTableViewCell: UITableViewCell {
         contentDescriptionLabel.text = post.description
         contentLikesLabel.text = "Лайки: \(String(post.likes))"
         contentViewsLabel.text = "Просмотры: \(String(post.views))"
+        
+        let processor = ImageProcessor()
+        processor.processImage(sourceImage: contentImageView.image!, filter: .monochrome(color: .gray, intensity: 0.5)) { image in
+            contentImageView.image = image
+        }
     }
     
     private func layout() {
