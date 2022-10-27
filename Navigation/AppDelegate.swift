@@ -9,10 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         
-        let profileViewController = ProfileViewController()
+        let logInViewController = LogInViewController()
         let feedViewController = FeedViewController()
-        
-        let profileNavigationVC = UINavigationController(rootViewController: profileViewController)
+                
+        let profileNavigationVC = UINavigationController(rootViewController: logInViewController)
+
         let feedNavigationVC = UINavigationController(rootViewController: feedViewController)
         
         let tabBarController = UITabBarController()

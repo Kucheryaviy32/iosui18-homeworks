@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		1C36EE3D2832ED310023A92E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C36EE3C2832ED310023A92E /* LogInViewController.swift */; };
 		1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */; };
 		1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */; };
 		1C45D5F127E2601000869E15 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C45D5F027E2601000869E15 /* PostViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
+		1C36EE3C2832ED310023A92E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1C45D5F027E2601000869E15 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +56,7 @@
 			children = (
 				1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */,
 				1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */,
+				1C36EE3C2832ED310023A92E /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			files = (
 				1CC0FA7F27DFC2730010CE0C /* ViewController.swift in Sources */,
 				1CC0FA7B27DFC2730010CE0C /* AppDelegate.swift in Sources */,
+				1C36EE3D2832ED310023A92E /* LogInViewController.swift in Sources */,
 				1C73A52227E2911100BD94C4 /* InformationViewController.swift in Sources */,
 				1C73A52027E28F8800BD94C4 /* Post.swift in Sources */,
 				1CC0FA9527DFC5940010CE0C /* FeedViewController.swift in Sources */,
