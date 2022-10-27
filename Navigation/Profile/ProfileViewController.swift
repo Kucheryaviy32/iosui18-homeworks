@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
         
         super.viewDidLoad()
         view.addSubview(profileTableView)
+
         
         NSLayoutConstraint.activate([
             profileTableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -40,6 +41,7 @@ extension ProfileViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
         cell.setup(massivFeed[indexPath.row])
         return cell
+
     }
 }
 

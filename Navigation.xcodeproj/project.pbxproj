@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		1C36EE3D2832ED310023A92E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C36EE3C2832ED310023A92E /* LogInViewController.swift */; };
 		1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */; };
 		1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
 		1C36EE3C2832ED310023A92E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
