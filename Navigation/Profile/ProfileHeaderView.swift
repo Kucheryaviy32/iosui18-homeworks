@@ -21,9 +21,9 @@ class ProfileHeaderView: UIView {
         userNameLabel.clipsToBounds = true
         return userNameLabel
     }()
-
+    
     private lazy var statusLabel : UILabel = {
-       let statusLabel = UILabel()
+        let statusLabel = UILabel()
         statusLabel.text = "Морти, за мной!"
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
     }()
     
     private lazy var statusTextField : UITextField = {
-       let statusTextField = UITextField()
+        let statusTextField = UITextField()
         statusTextField.backgroundColor = .white
         statusTextField.placeholder = "Введите новый статус"
         statusTextField.textAlignment = NSTextAlignment.center
@@ -55,7 +55,7 @@ class ProfileHeaderView: UIView {
         statusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         statusButton.layer.shadowColor = UIColor.black.cgColor
         statusButton.layer.shadowOpacity = 0.7
-
+        
         return statusButton
     }()
     
@@ -66,22 +66,20 @@ class ProfileHeaderView: UIView {
         
         addSubview(profileImageView)
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         addSubview(userNameLabel)
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        
         addSubview(statusLabel)
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        
         addSubview(statusTextField)
         statusTextField.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(statusButton)
         statusButton.translatesAutoresizingMaskIntoConstraints = false
-
         
         NSLayoutConstraint.activate([
-            
             profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             profileImageView.widthAnchor.constraint(equalToConstant: 100),
@@ -99,6 +97,7 @@ class ProfileHeaderView: UIView {
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             statusLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
             statusLabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -16),
+            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
     
@@ -117,3 +116,4 @@ class ProfileHeaderView: UIView {
     }
     
 }
+
