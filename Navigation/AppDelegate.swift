@@ -11,9 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let logInViewController = LogInViewController()
         let feedViewController = FeedViewController()
-        
-        
+                
         let profileNavigationVC = UINavigationController(rootViewController: logInViewController)
+
         let feedNavigationVC = UINavigationController(rootViewController: feedViewController)
         
         let tabBarController = UITabBarController()
