@@ -1,5 +1,6 @@
 
 import UIKit
+import StorageService
 
 
 class ProfileViewController: UIViewController {
@@ -16,6 +17,12 @@ class ProfileViewController: UIViewController {
     
     let massivFeed = Post.postFeed()
     override func viewDidLoad() {
+        
+        #if DEBUG
+        profileTableView.backgroundColor = .red
+        #else
+        profileTableView.backgroundColor = .blue
+        #endif
         
         super.viewDidLoad()
         view.addSubview(profileTableView)
