@@ -40,7 +40,11 @@ class LogInViewController: UIViewController {
     
     lazy var loginTextField : UITextField = {
         let loginTextField = UITextField()
-        loginTextField.placeholder = "Email или номер телефона"
+        loginTextField.placeholder = "Ввелите логин"
+#if DEBUG
+        loginTextField.text = "Test"
+#else
+#endif
         loginTextField.textColor = .black
         loginTextField.font = .systemFont(ofSize: 16, weight: .regular)
         loginTextField.autocapitalizationType = .none
@@ -50,6 +54,7 @@ class LogInViewController: UIViewController {
         loginTextField.delegate = self
         return loginTextField
     }()
+   
     
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
@@ -80,11 +85,30 @@ class LogInViewController: UIViewController {
         logInButton.addTarget(self, action: #selector(inButton), for: .touchUpInside)
         return logInButton
     }()
+
     
     @objc func inButton() {
-        let viewController = ProfileViewController(nibName: nil, bundle: nil)
+        
+        var userService: UserService
+        
+       #if DEBUG
+        userService = TestUserService()
+       #else
+        userService = CurrentUserService()
+       #endif
+        userService.getUser(login: loginTextField.text!)
+        let acceptIn = userService.accept
+        if acceptIn == true {
+        let viewController = ProfileViewController(userService: userService)
         self.navigationController?.pushViewController(viewController, animated: true)
         self.navigationController?.navigationBar.isHidden = false
+        } else {
+            loginTextField.text = ""
+            let alertLogin = UIAlertController(title: "Ошибка авторизации", message: "Пользователь не найден", preferredStyle: .alert)
+            let firstAlertLoginAction = UIAlertAction (title: "Попробовать снова", style: .default) {_ in print ("firstAlertLoginAction")}
+            alertLogin.addAction(firstAlertLoginAction)
+            self.present(alertLogin, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {
@@ -113,6 +137,7 @@ class LogInViewController: UIViewController {
         
         logInView.addSubview(logInButton)
         logInButton.translatesAutoresizingMaskIntoConstraints = false
+   
         
         NSLayoutConstraint.activate([
             
