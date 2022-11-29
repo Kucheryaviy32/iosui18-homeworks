@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1C85F2A128A91F580021D27F"
-               BuildableName = "Navigation copy.app"
+               BuildableName = "Navigation debug.app"
                BlueprintName = "Navigation debug"
                ReferencedContainer = "container:Navigation.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1C85F2A128A91F580021D27F"
-            BuildableName = "Navigation copy.app"
+            BuildableName = "Navigation debug.app"
             BlueprintName = "Navigation debug"
             ReferencedContainer = "container:Navigation.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1C85F2A128A91F580021D27F"
-            BuildableName = "Navigation copy.app"
+            BuildableName = "Navigation debug.app"
             BlueprintName = "Navigation debug"
             ReferencedContainer = "container:Navigation.xcodeproj">
          </BuildableReference>
