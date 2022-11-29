@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 
-		1C0B36D7290A96D20090F322 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C0B36D6290A96D20090F322 /* iOSIntPackage */; };
 		1C36EE3D2832ED310023A92E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C36EE3C2832ED310023A92E /* LogInViewController.swift */; };
 		1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */; };
 		1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */; };
@@ -39,9 +38,8 @@
 		1CC0FA8427DFC2730010CE0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0FA8327DFC2730010CE0C /* Assets.xcassets */; };
 		1CC0FA8727DFC2730010CE0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0FA8527DFC2730010CE0C /* LaunchScreen.storyboard */; };
 		1CC0FA9527DFC5940010CE0C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0FA9427DFC5940010CE0C /* FeedViewController.swift */; };
-		1FBCF2FEC549982FE3B0DC4C /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9813F9389033B51DAD479F0 /* Pods_Navigation.framework */; };
-		82C69EC626AF35BDFC93B786 /* Pods_Navigation_debug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4EDA93368031D20FAA238D /* Pods_Navigation_debug.framework */; };
-		D7175200FAD685CDE74C8072 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45DE1EBB8A01A4C39C5FD6D /* Pods_StorageService.framework */; };
+		1CC33B29290ACFF9005D6C87 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC33B28290ACFF9005D6C87 /* UserData.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +85,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-
 		1C36EE3C2832ED310023A92E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -107,15 +104,8 @@
 		1CC0FA8627DFC2730010CE0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CC0FA8827DFC2730010CE0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC0FA9427DFC5940010CE0C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		2A652A939B9F1BBB2D4D9C21 /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
-		4944BBE7329C84E24AC2A855 /* Pods-StorageService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.debug.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.debug.xcconfig"; sourceTree = "<group>"; };
-		4CAD0BA889CDED46C2F6A08C /* Pods-Navigation debug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation debug.release.xcconfig"; path = "Target Support Files/Pods-Navigation debug/Pods-Navigation debug.release.xcconfig"; sourceTree = "<group>"; };
-		596449F711118C8E80681399 /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
-		A45DE1EBB8A01A4C39C5FD6D /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9813F9389033B51DAD479F0 /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE1BD6A1D77A56A38A252097 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
-		F266FC289CFFFC42DE119D73 /* Pods-Navigation debug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation debug.debug.xcconfig"; path = "Target Support Files/Pods-Navigation debug/Pods-Navigation debug.debug.xcconfig"; sourceTree = "<group>"; };
-		FA4EDA93368031D20FAA238D /* Pods_Navigation_debug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation_debug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CC33B28290ACFF9005D6C87 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +190,7 @@
 				1C73A52127E2911100BD94C4 /* InformationViewController.swift */,
 				1CC0FA7E27DFC2730010CE0C /* ViewController.swift */,
 				1CC0FA8027DFC2730010CE0C /* Main.storyboard */,
+				1CC33B28290ACFF9005D6C87 /* UserData.swift */,
 				1CC0FA8327DFC2730010CE0C /* Assets.xcassets */,
 				1CC0FA8527DFC2730010CE0C /* LaunchScreen.storyboard */,
 				1CC0FA8827DFC2730010CE0C /* Info.plist */,
@@ -502,6 +493,7 @@
 				1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */,
 				1C45D5F127E2601000869E15 /* PostViewController.swift in Sources */,
 				1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */,
+				1CC33B29290ACFF9005D6C87 /* UserData.swift in Sources */,
 				1C9B61E22842A9F600B1FD01 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

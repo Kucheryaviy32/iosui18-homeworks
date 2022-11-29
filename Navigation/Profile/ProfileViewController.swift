@@ -16,10 +16,25 @@ class ProfileViewController: UIViewController {
     }()
     
     let massivFeed = Post.postFeed()
+    
+    
+    
+    
+    private let userService: UserService
+    
+    init(userService: UserService){
+        self.userService = userService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         
         #if DEBUG
-        profileTableView.backgroundColor = .red
+        profileTableView.backgroundColor = .systemRed
         #else
         profileTableView.backgroundColor = .white
         #endif
@@ -27,7 +42,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(profileTableView)
 
-        
         NSLayoutConstraint.activate([
             profileTableView.topAnchor.constraint(equalTo: view.topAnchor),
             profileTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -52,15 +66,20 @@ extension ProfileViewController : UITableViewDataSource {
     }
 }
 
+
 extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
     
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let header = ProfileHeaderView()
+        header.userNameLabel.text = userService.user?.name
+        header.profileImageView.image = userService.user?.avatar
+        header.statusLabel.text = userService.user?.status
         return header
     }
 }
-
