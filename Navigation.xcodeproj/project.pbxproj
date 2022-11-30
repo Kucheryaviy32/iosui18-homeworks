@@ -31,6 +31,7 @@
 		1C85F2B328A91F580021D27F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0FA8027DFC2730010CE0C /* Main.storyboard */; };
 		1C85F2B528A91F580021D27F /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C85F29228A91B1B0021D27F /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C9B61E22842A9F600B1FD01 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9B61E12842A9F600B1FD01 /* PostTableViewCell.swift */; };
+		1CA080E329359F8800B066D7 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA080E229359F8800B066D7 /* Authentication.swift */; };
 		1CC0FA7B27DFC2730010CE0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0FA7A27DFC2730010CE0C /* AppDelegate.swift */; };
 		1CC0FA7F27DFC2730010CE0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0FA7E27DFC2730010CE0C /* ViewController.swift */; };
 		1CC0FA8227DFC2730010CE0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0FA8027DFC2730010CE0C /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		1C85F2B928A91F580021D27F /* Navigation debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Navigation debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C85F2BA28A91F580021D27F /* Navigation copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Navigation copy-Info.plist"; path = "/Users/Kucheryavii32/Desktop/Все что есть/NETOLOGY/Navigation/Navigation copy-Info.plist"; sourceTree = "<absolute>"; };
 		1C9B61E12842A9F600B1FD01 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		1CA080E229359F8800B066D7 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		1CC0FA7727DFC2730010CE0C /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC0FA7A27DFC2730010CE0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC0FA7E27DFC2730010CE0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				1CC0FA7A27DFC2730010CE0C /* AppDelegate.swift */,
+				1CA080E229359F8800B066D7 /* Authentication.swift */,
 				1CC0FA9427DFC5940010CE0C /* FeedViewController.swift */,
 				1C45D5F027E2601000869E15 /* PostViewController.swift */,
 				1C73A52127E2911100BD94C4 /* InformationViewController.swift */,
@@ -367,6 +370,7 @@
 				1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */,
 				1CC33B29290ACFF9005D6C87 /* UserData.swift in Sources */,
 				1C9B61E22842A9F600B1FD01 /* PostTableViewCell.swift in Sources */,
+				1CA080E329359F8800B066D7 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

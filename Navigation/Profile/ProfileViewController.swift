@@ -17,13 +17,10 @@ class ProfileViewController: UIViewController {
     
     let massivFeed = Post.postFeed()
     
-    
-    
-    
-    private let userService: UserService
+    let uService: UserService
     
     init(userService: UserService){
-        self.userService = userService
+        self.uService = userService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,15 +30,15 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        #if DEBUG
+#if DEBUG
         profileTableView.backgroundColor = .systemRed
-        #else
+#else
         profileTableView.backgroundColor = .white
-        #endif
+#endif
         
         super.viewDidLoad()
         view.addSubview(profileTableView)
-
+        
         NSLayoutConstraint.activate([
             profileTableView.topAnchor.constraint(equalTo: view.topAnchor),
             profileTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -62,7 +59,7 @@ extension ProfileViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
         cell.setup(massivFeed[indexPath.row])
         return cell
-
+        
     }
 }
 
@@ -77,9 +74,9 @@ extension ProfileViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let header = ProfileHeaderView()
-        header.userNameLabel.text = userService.user?.name
-        header.profileImageView.image = userService.user?.avatar
-        header.statusLabel.text = userService.user?.status
+        header.userNameLabel.text = uService.user.name
+        header.profileImageView.image = uService.user.avatar
+        header.statusLabel.text = uService.user.status
         return header
     }
 }

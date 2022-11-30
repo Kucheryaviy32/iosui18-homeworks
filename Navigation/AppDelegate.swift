@@ -3,31 +3,23 @@ import StorageService
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow()
         
-        let logInViewController = LogInViewController()
-        let feedViewController = FeedViewController()
-                
-        let profileNavigationVC = UINavigationController(rootViewController: logInViewController)
-
-        let feedNavigationVC = UINavigationController(rootViewController: feedViewController)
-        
         let tabBarController = UITabBarController()
-                    
-        profileNavigationVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
-       
-        feedNavigationVC.tabBarItem = UITabBarItem(title: "Новости", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
         
-        profileNavigationVC.view.backgroundColor = .white
-        feedNavigationVC.view.backgroundColor = .cyan
+        let logInViewController = LogInViewController()
         
-        tabBarController.viewControllers = [feedNavigationVC, profileNavigationVC]
-
+        let loginFactory = MyLoginFactory()
+        logInViewController.delegate = loginFactory.createLoginInspector()
+        
+        let loginNavigationController = UINavigationController(rootViewController: logInViewController)
+        tabBarController.viewControllers = [loginNavigationController]
+        
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
@@ -35,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
             UITabBar.appearance().standardAppearance = tabBarAppearance
-
+            
             let navBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithDefaultBackground()
             UINavigationBar.appearance().standardAppearance = navBarAppearance
-        
+            
             if #available(iOS 15.0, *) {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
                 UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
