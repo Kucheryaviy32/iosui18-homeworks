@@ -10,7 +10,8 @@ import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
-    
+    static let identifire = "PostTableViewCell"
+
     private let contentProfileView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false

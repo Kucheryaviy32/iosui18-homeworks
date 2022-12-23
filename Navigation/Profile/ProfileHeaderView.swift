@@ -1,4 +1,3 @@
-
 import UIKit
 
 class ProfileHeaderView: UIView {
@@ -113,4 +112,3 @@ class ProfileHeaderView: UIView {
     }
     
 }
-

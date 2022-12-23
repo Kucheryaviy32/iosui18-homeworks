@@ -43,6 +43,7 @@ class LogInViewController: UIViewController {
     lazy var loginTextField : UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
+        loginTextField.text = "Rick" // По рекомендации преподавателя
 #if DEBUG
         loginTextField.text = "Test"
 #else
@@ -61,6 +62,8 @@ class LogInViewController: UIViewController {
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.placeholder = "Пароль"
+        passwordTextField.text = "Sanchez"
+
 #if DEBUG
         passwordTextField.text = "Test"
 #else

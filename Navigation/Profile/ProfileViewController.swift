@@ -11,7 +11,7 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        
         return tableView
     }()
     
@@ -37,6 +37,10 @@ class ProfileViewController: UIViewController {
 #endif
         
         super.viewDidLoad()
+        
+        profileTableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        profileTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        
         view.addSubview(profileTableView)
         
         NSLayoutConstraint.activate([
@@ -46,37 +50,62 @@ class ProfileViewController: UIViewController {
             profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-    
-}
-
-extension ProfileViewController : UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        massivFeed.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
-        cell.setup(massivFeed[indexPath.row])
-        return cell
-        
-    }
 }
 
 
-extension ProfileViewController : UITableViewDelegate {
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        section == 1 ? self.massivFeed.count : 1
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifire, for: indexPath) as! PostTableViewCell
+            cell.setup(massivFeed[indexPath.row])
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifire, for: indexPath) as! PhotosTableViewCell
+        return cell
+        
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = ProfileHeaderView()
-        header.userNameLabel.text = uService.user.name
-        header.profileImageView.image = uService.user.avatar
-        header.statusLabel.text = uService.user.status
-        return header
+        if section == 0 {
+            let header = ProfileHeaderView()
+            header.userNameLabel.text = uService.user.name
+            header.profileImageView.image = uService.user.avatar
+            header.statusLabel.text = uService.user.status
+            return header
+        } else
+        { return nil }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 230
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            navigationController?.pushViewController(PhotosViewController(), animated: true)
+        }
+    }
+    
 }
