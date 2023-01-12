@@ -63,7 +63,7 @@ class LogInViewController: UIViewController {
         let passwordTextField = UITextField()
         passwordTextField.placeholder = "Пароль"
         passwordTextField.text = "Sanchez"
-
+        
 #if DEBUG
         passwordTextField.text = "Test"
 #else
@@ -78,9 +78,13 @@ class LogInViewController: UIViewController {
         return passwordTextField
     }()
     
-    lazy var logInButton : UIButton = {
-        let logInButton = UIButton()
-        logInButton.setTitle("Войти", for: .normal)
+    lazy var logInButton : CustomButton = {
+        let logInButton = CustomButton(vc: self,
+                                       text: "Войти",
+                                       backgroundColor: nil,
+                                       backgroundImage: nil,
+                                       tag: nil,
+                                       shadow: true) {(vc: UIViewController, _ sender: CustomButton) in self.inButton(self)}
         logInButton.setTitleColor(.white, for: .normal)
         let image = UIImage(named: "blue_pixel")
         let normalstateImage = image?.image(alpha: 1)
@@ -91,14 +95,13 @@ class LogInViewController: UIViewController {
         logInButton.setBackgroundImage(anotherstateImage, for: .disabled)
         logInButton.layer.cornerRadius = 10
         logInButton.layer.masksToBounds = true
-        logInButton.addTarget(self, action: #selector(inButton), for: .touchUpInside)
         return logInButton
     }()
     
-    @objc func inButton() {
-        if let loginInspector = delegate {
-            if loginInspector.checkPassword(login: loginTextField.text ?? "", password: passwordTextField.text ?? "") {
-                logined()
+    let inButton = {(vc: LogInViewController) in
+        if let loginInspector = vc.delegate {
+            if loginInspector.checkPassword(login: vc.loginTextField.text ?? "", password: vc.passwordTextField.text ?? "") {
+                vc.logined()
             }
             else {
                 let alertController = UIAlertController(title: "Ошибка авторизации",
@@ -106,8 +109,8 @@ class LogInViewController: UIViewController {
                                                         preferredStyle: .alert)
                 let action = UIAlertAction(title: "Попробовать снова", style: .default, handler: nil)
                 alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
-                passwordTextField.text = nil
+                vc.present(alertController, animated: true, completion: nil)
+                vc.passwordTextField.text = nil
             }
         }
     }
@@ -122,7 +125,7 @@ class LogInViewController: UIViewController {
 #else
         userService = CurrentUserService()
 #endif
-       
+        
         let feedViewController = FeedViewController()
         let profileViewController = ProfileViewController(userService: userService)
         let profileNavigationVC = UINavigationController(rootViewController: profileViewController)
