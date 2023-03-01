@@ -15,36 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                self.window?.rootViewController = tabBarController
                self.window?.makeKeyAndVisible()
-
-//        window = UIWindow()
-//        
-//        let tabBarController = UITabBarController()
-//
-//        let logInViewController = LogInViewController()
-//
-//        let loginFactory = MyLoginFactory()
-//        logInViewController.delegate = loginFactory.createLoginInspector()
-//
-//        let loginNavigationController = UINavigationController(rootViewController: logInViewController)
-//        tabBarController.viewControllers = [loginNavigationController]
-//
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
-//
-//        if #available(iOS 13.0, *) {
-//            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
-//            tabBarAppearance.configureWithDefaultBackground()
-//            UITabBar.appearance().standardAppearance = tabBarAppearance
-//
-//            let navBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
-//            navBarAppearance.configureWithDefaultBackground()
-//            UINavigationBar.appearance().standardAppearance = navBarAppearance
-//
-//            if #available(iOS 15.0, *) {
-//                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-//                UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-//            }
-//        }
         
         return true
     }
