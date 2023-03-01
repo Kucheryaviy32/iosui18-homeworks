@@ -8,9 +8,7 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    
-    let model: FeedModel = FeedModel()
-    
+        
     let postStackView : UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -99,6 +97,18 @@ class FeedViewController: UIViewController {
         return label
     }()
     
+    var coordinator: FeedCoordinator
+    var model: FeedModel
+    
+    init(coordinator: FeedCoordinator, model: FeedModel) {
+        self.model = model
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,8 +131,7 @@ class FeedViewController: UIViewController {
         ])
     }
     
-    func showPost(sender: UIButton) {
-        let vc = PostViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+    func showPost(sender: CustomButton) {
+        model.getPost(sender: sender)
+}
 }
