@@ -1,4 +1,3 @@
-
 import UIKit
 import SnapKit
 
@@ -123,4 +122,3 @@ class ProfileHeaderView: UIView {
     }
     
 }
-

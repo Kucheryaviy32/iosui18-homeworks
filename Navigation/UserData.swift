@@ -26,42 +26,29 @@ class User {
 
 protocol UserService {
     
-    var user : User? { get }
+    var user : User { get }
     func getUser(login: String) -> User?
-    var accept : Bool { get }
 }
 
 public class CurrentUserService : UserService {
     
-   var user: User? = User(login: "Rick", name: "Рик Санчез", avatar: UIImage(named: "ProfileImage"), status: "В ожидании 7 серии")
-   public var accept: Bool = false
-
-    // Понимаю что сделал скорее всего все криво, но пока для наглядности прописал все без иницилизатора
-    
+    var user: User = User(login: "Rick",
+                          name: "Рик Санчез",
+                          avatar: UIImage(named: "ProfileImage"),
+                          status: "В ожидании 7 серии")
     func getUser(login: String) -> User? {
-        if let activeUser = user {
-            if login == activeUser.logIn {
-                accept = true
-                return user
-            }
-        }
-        return nil
+        login == user.logIn ? user : nil
     }
-
 }
-    
 
-public class TestUserService : UserService {
-    public var accept: Bool = false
-    var user : User? = User(login: "Test", name: "Тестировщик", avatar: UIImage(named: "morty"), status: "Похоже все работает")
+
+final class TestUserService : UserService {
+    var user = User(login: "Test",
+                    name: "Тестировщик",
+                    avatar: UIImage(named: "morty"),
+                    status: "Похоже все работает")
     
     func getUser(login: String) -> User? {
-        if let activeUser = user{
-            if login == activeUser.logIn {
-            accept = true
-            return user
-            }
-        }
-        return nil
+        login == user.logIn ? user : nil
     }
 }

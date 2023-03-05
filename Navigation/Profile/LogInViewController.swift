@@ -10,6 +10,8 @@ class LogInViewController: UIViewController {
     
     private let nc = NotificationCenter.default
     
+    var delegate: LoginViewControllerDelegate?
+    
     lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
         return scrollView
@@ -40,7 +42,8 @@ class LogInViewController: UIViewController {
     
     lazy var loginTextField : UITextField = {
         let loginTextField = UITextField()
-        loginTextField.placeholder = "Ввелите логин"
+        loginTextField.placeholder = "Введите логин"
+        loginTextField.text = "Rick" // По рекомендации преподавателя
 #if DEBUG
         loginTextField.text = "Test"
 #else
@@ -54,11 +57,17 @@ class LogInViewController: UIViewController {
         loginTextField.delegate = self
         return loginTextField
     }()
-   
+    
     
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.placeholder = "Пароль"
+        passwordTextField.text = "Sanchez"
+
+#if DEBUG
+        passwordTextField.text = "Test"
+#else
+#endif
         passwordTextField.textColor = .black
         passwordTextField.font = .systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
@@ -85,30 +94,49 @@ class LogInViewController: UIViewController {
         logInButton.addTarget(self, action: #selector(inButton), for: .touchUpInside)
         return logInButton
     }()
-
     
     @objc func inButton() {
+        if let loginInspector = delegate {
+            if loginInspector.checkPassword(login: loginTextField.text ?? "", password: passwordTextField.text ?? "") {
+                logined()
+            }
+            else {
+                let alertController = UIAlertController(title: "Ошибка авторизации",
+                                                        message: "Неверный логин или пароль",
+                                                        preferredStyle: .alert)
+                let action = UIAlertAction(title: "Попробовать снова", style: .default, handler: nil)
+                alertController.addAction(action)
+                self.present(alertController, animated: true, completion: nil)
+                passwordTextField.text = nil
+            }
+        }
+    }
+    
+    
+    func logined() {
         
         var userService: UserService
         
-       #if DEBUG
+#if DEBUG
         userService = TestUserService()
-       #else
+#else
         userService = CurrentUserService()
-       #endif
-        userService.getUser(login: loginTextField.text!)
-        let acceptIn = userService.accept
-        if acceptIn == true {
-        let viewController = ProfileViewController(userService: userService)
-        self.navigationController?.pushViewController(viewController, animated: true)
-        self.navigationController?.navigationBar.isHidden = false
-        } else {
-            loginTextField.text = ""
-            let alertLogin = UIAlertController(title: "Ошибка авторизации", message: "Пользователь не найден", preferredStyle: .alert)
-            let firstAlertLoginAction = UIAlertAction (title: "Попробовать снова", style: .default) {_ in print ("firstAlertLoginAction")}
-            alertLogin.addAction(firstAlertLoginAction)
-            self.present(alertLogin, animated: true, completion: nil)
-        }
+#endif
+       
+        let feedViewController = FeedViewController()
+        let profileViewController = ProfileViewController(userService: userService)
+        let profileNavigationVC = UINavigationController(rootViewController: profileViewController)
+        
+        let feedNavigationVC = UINavigationController(rootViewController: feedViewController)
+        
+        profileNavigationVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
+        
+        feedNavigationVC.tabBarItem = UITabBarItem(title: "Новости", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
+        
+        profileNavigationVC.view.backgroundColor = .white
+        feedNavigationVC.view.backgroundColor = .cyan
+        
+        navigationController?.tabBarController!.viewControllers = [feedNavigationVC, profileNavigationVC]
     }
     
     override func viewDidLoad() {
@@ -137,7 +165,7 @@ class LogInViewController: UIViewController {
         
         logInView.addSubview(logInButton)
         logInButton.translatesAutoresizingMaskIntoConstraints = false
-   
+        
         
         NSLayoutConstraint.activate([
             
