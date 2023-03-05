@@ -11,6 +11,7 @@ class LogInViewController: UIViewController {
     private let nc = NotificationCenter.default
     
     var delegate: LoginViewControllerDelegate?
+    var callback: (_ authenticationData: (userService: UserService, name: String)) -> Void
     
     lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -125,22 +126,17 @@ class LogInViewController: UIViewController {
 #else
         userService = CurrentUserService()
 #endif
-        
-        let feedViewController = FeedViewController()
-        let profileViewController = ProfileViewController(userService: userService)
-        let profileNavigationVC = UINavigationController(rootViewController: profileViewController)
-        
-        let feedNavigationVC = UINavigationController(rootViewController: feedViewController)
-        
-        profileNavigationVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
-        
-        feedNavigationVC.tabBarItem = UITabBarItem(title: "Новости", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
-        
-        profileNavigationVC.view.backgroundColor = .white
-        feedNavigationVC.view.backgroundColor = .cyan
-        
-        navigationController?.tabBarController!.viewControllers = [feedNavigationVC, profileNavigationVC]
+        callback((userService: userService, name: loginTextField.text ?? ""))
     }
+    
+    init(callback: @escaping (_ authenticationData: (userService: UserService, name: String)) -> Void) {
+         self.callback = callback
+         super.init(nibName: nil, bundle: nil)
+     }
+     
+     required init?(coder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+     }
     
     override func viewDidLoad() {
         super.viewDidLoad()

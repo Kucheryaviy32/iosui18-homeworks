@@ -18,9 +18,11 @@ class ProfileViewController: UIViewController {
     let massivFeed = Post.postFeed()
     
     let uService: UserService
+    let coordinator: VCCoordinator
     
-    init(userService: UserService){
+    init(coordinator: VCCoordinator, userService: UserService){
         self.uService = userService
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
