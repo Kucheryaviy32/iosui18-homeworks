@@ -28,23 +28,45 @@ class PhotosViewController: UIViewController {
         return collectionView
     }()
     
-    var contentPhotoData: [UIImage] = [] {
-        didSet {
-            if contentPhotoData.count == constPhotoArray.count {
-                imagePublisherFacade.removeSubscription(for: self)
-            }
-        }
-    }
+    var contentPhotoData: [UIImage] = []
+    var timerCount = 0.0
+    var timer: Timer? = nil
     
     override func viewDidLoad() {
+       
         super.viewDidLoad()
         title = "Фотогалерея"
         view.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifire)
         useConstraint()
-        imagePublisherFacade.subscribe(self)
-        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: constPhotoArray.count*10, userImages: constPhotoArray)
+        
+        let imageProcessor = ImageProcessor()
+                 imageProcessor.processImagesOnThread(sourceImages: constPhotoArray, filter: .chrome, qos: .background) {cgImages in
+                     let images = cgImages.map({UIImage(cgImage: $0!)})
+                     self.contentPhotoData.removeAll()
+                     images.forEach({self.contentPhotoData.append($0)})
+                     DispatchQueue.main.async{
+                         self.collectionView.reloadData()
+                     }
+                 }
+                 timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+
+                 /*
+                  .default - 0.6800000000000004 сек
+                  .background - 2.719999999999986 сек
+                  .userInitiated - 0.6900000000000004 сек
+                  .userInteractive - 0.6900000000000004 сек
+                  .utility - 0.6800000000000004 сек
+                 */
+             }
+
+             @objc func updateTimer() {
+                 timerCount += 0.01
+                 if contentPhotoData.count > 0 {
+                     print("Потрачено \(self.timerCount) секунд")
+                     timer!.invalidate()
+                 }
     }
     
     override func viewWillAppear(_ animated: Bool) {
