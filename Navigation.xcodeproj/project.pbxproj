@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C06B84E29B50A3800D0421C /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C06B84D29B50A3800D0421C /* iOSIntPackage */; };
+		1C17BDBC29BF6287009C3CCF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17BDBB29BF6287009C3CCF /* NetworkService.swift */; };
 		1C36EE3D2832ED310023A92E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C36EE3C2832ED310023A92E /* LogInViewController.swift */; };
 		1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */; };
 		1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C17BDBB29BF6287009C3CCF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1C36EE3C2832ED310023A92E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				1C9C910D297067E900045BAC /* General */,
 				1CC0FA7A27DFC2730010CE0C /* AppDelegate.swift */,
 				1CA080E229359F8800B066D7 /* Authentication.swift */,
+				1C17BDBB29BF6287009C3CCF /* NetworkService.swift */,
 				1CD702A029AFDC440072728F /* RootController */,
 				1CC0FA7E27DFC2730010CE0C /* ViewController.swift */,
 				1CC0FA8027DFC2730010CE0C /* Main.storyboard */,
@@ -433,6 +436,7 @@
 			files = (
 				1CC0FA7F27DFC2730010CE0C /* ViewController.swift in Sources */,
 				1CD702A829AFDD400072728F /* ProfileCoordinator.swift in Sources */,
+				1C17BDBC29BF6287009C3CCF /* NetworkService.swift in Sources */,
 				1CC0FA7B27DFC2730010CE0C /* AppDelegate.swift in Sources */,
 				1C36EE3D2832ED310023A92E /* LogInViewController.swift in Sources */,
 				1CD702A229AFDC7A0072728F /* TabBarController.swift in Sources */,
