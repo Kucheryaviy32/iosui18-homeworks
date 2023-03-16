@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         let appConfiguration = getRandomConfiguration()
         NetworkService.URLSessionDataTask(appConfiguration)
-        
+
                self.window?.rootViewController = tabBarController
                self.window?.makeKeyAndVisible()
         
