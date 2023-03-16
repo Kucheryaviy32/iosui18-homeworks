@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                
                let tabBarController = rootCoordinator.startApp(authenticationData: nil)
                 
+        let appConfiguration = getRandomConfiguration()
+        NetworkService.URLSessionDataTask(appConfiguration)
+        
                self.window?.rootViewController = tabBarController
                self.window?.makeKeyAndVisible()
         
         return true
     }
+    
+    private func getRandomConfiguration() -> AppConfiguration {
+          let array: [AppConfiguration] = [.species, .vehicles, .starships]
+          return array[Int.random(in: 1...2)]
+      }
+    
 }
