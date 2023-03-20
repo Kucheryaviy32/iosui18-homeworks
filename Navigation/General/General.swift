@@ -27,3 +27,10 @@ let constPhotoArray = [UIImage(named:"Photo1")!,
                        UIImage(named:"Photo18")!,
                        UIImage(named:"Photo19")!,
                        UIImage(named:"Photo20")!]
+
+enum AppError: Error {
+    case unauthorized
+    case notFound
+    case badData
+    case internalServer
+}

@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
      lazy var profileImageView : UIImageView = {
         let profileImageView = UIImageView()
@@ -56,9 +56,11 @@ class ProfileHeaderView: UIView {
     }()
     
     var statusText : String = ""
+    static let identifire = "ProfileHeaderView"
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+      
+        super.init(reuseIdentifier: reuseIdentifier)
         
         addSubview(profileImageView)
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,6 +102,12 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public func initUserData(user: User) {
+          userNameLabel.text = user.name
+          profileImageView.image = user.avatar
+          statusLabel.text = user.status
+      }
     
     @objc func statusTextChanged() {
         statusText = String(statusTextField.text!)

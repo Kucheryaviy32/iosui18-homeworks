@@ -44,7 +44,7 @@ final class RootFactory {
         case .profile:
 
             if let userData = data {
-                let profileViewController = ProfileViewController(coordinator: coordinator, userService: userData.userService)
+                let profileViewController = ProfileViewController(coordinator: coordinator as! ProfileCoordinator, userService: userData.userService, name: userData.name)
                 let profileNavigationController = UINavigationController(rootViewController: profileViewController)
 
                 profileNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
