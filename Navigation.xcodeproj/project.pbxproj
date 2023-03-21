@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1C06B84E29B50A3800D0421C /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C06B84D29B50A3800D0421C /* iOSIntPackage */; };
 		1C17BDBC29BF6287009C3CCF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17BDBB29BF6287009C3CCF /* NetworkService.swift */; };
-		1C26394D29C7CE3E006720B0 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7D7B65456463A55530B76 /* Pods_Navigation.framework */; };
 		1C26394E29C7CE41006720B0 /* Pods_Navigation_debug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C1F22F8CACD470D337ECAA2 /* Pods_Navigation_debug.framework */; };
 		1C26394F29C7CE44006720B0 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FDE1C6C932C350A6D4721B /* Pods_StorageService.framework */; };
 		1C26395129C8652C006720B0 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C26395029C8652C006720B0 /* Checker.swift */; };
@@ -22,6 +21,7 @@
 		1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */; };
 		1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */; };
 		1C45D5F127E2601000869E15 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C45D5F027E2601000869E15 /* PostViewController.swift */; };
+		1C5BF1ED29C8BB79006EAC75 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7D7B65456463A55530B76 /* Pods_Navigation.framework */; };
 		1C73A52227E2911100BD94C4 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73A52127E2911100BD94C4 /* InformationViewController.swift */; };
 		1C85F29528A91B1B0021D27F /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C85F29428A91B1B0021D27F /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C85F29828A91B1B0021D27F /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C85F29228A91B1B0021D27F /* StorageService.framework */; };
@@ -53,9 +53,6 @@
 		1CC0FA8727DFC2730010CE0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0FA8527DFC2730010CE0C /* LaunchScreen.storyboard */; };
 		1CC0FA9527DFC5940010CE0C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0FA9427DFC5940010CE0C /* FeedViewController.swift */; };
 		1CC33B29290ACFF9005D6C87 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC33B28290ACFF9005D6C87 /* UserData.swift */; };
-		1CD39A2529C7CBD100783D73 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD39A2429C7CBD100783D73 /* FirebaseAnalytics */; };
-		1CD39A2729C7CBD100783D73 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD39A2629C7CBD100783D73 /* FirebaseAuth */; };
-		1CD39A2929C7CBD100783D73 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD39A2829C7CBD100783D73 /* FirebaseDatabase */; };
 		1CD702A229AFDC7A0072728F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD702A129AFDC7A0072728F /* TabBarController.swift */; };
 		1CD702A429AFDCAD0072728F /* RootFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD702A329AFDCAD0072728F /* RootFactory.swift */; };
 		1CD702A629AFDCF80072728F /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD702A529AFDCF80072728F /* RootCoordinator.swift */; };
@@ -178,12 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CD39A2929C7CBD100783D73 /* FirebaseDatabase in Frameworks */,
 				1C85F29828A91B1B0021D27F /* StorageService.framework in Frameworks */,
 				1C06B84E29B50A3800D0421C /* iOSIntPackage in Frameworks */,
-				1CD39A2529C7CBD100783D73 /* FirebaseAnalytics in Frameworks */,
-				1C26394D29C7CE3E006720B0 /* Pods_Navigation.framework in Frameworks */,
-				1CD39A2729C7CBD100783D73 /* FirebaseAuth in Frameworks */,
+				1C5BF1ED29C8BB79006EAC75 /* Pods_Navigation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,9 +404,6 @@
 			name = Navigation;
 			packageProductDependencies = (
 				1C06B84D29B50A3800D0421C /* iOSIntPackage */,
-				1CD39A2429C7CBD100783D73 /* FirebaseAnalytics */,
-				1CD39A2629C7CBD100783D73 /* FirebaseAuth */,
-				1CD39A2829C7CBD100783D73 /* FirebaseDatabase */,
 			);
 			productName = Navigation;
 			productReference = 1CC0FA7727DFC2730010CE0C /* Navigation.app */;
@@ -447,7 +438,6 @@
 			mainGroup = 1CC0FA6E27DFC2730010CE0C;
 			packageReferences = (
 				1C06B84C29B50A3800D0421C /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
-				1CD39A2329C7CBD100783D73 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 1CC0FA7827DFC2730010CE0C /* Products */;
 			projectDirPath = "";
@@ -797,7 +787,9 @@
 		1CC0FA8927DFC2730010CE0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -849,7 +841,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -859,7 +851,9 @@
 		1CC0FA8A27DFC2730010CE0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -905,6 +899,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -921,9 +916,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -936,6 +933,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = DEBUG;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = SIV.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -953,9 +951,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -968,6 +968,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = SIV.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1026,14 +1027,6 @@
 				version = 3.2.3;
 			};
 		};
-		1CD39A2329C7CBD100783D73 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1041,21 +1034,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1C06B84C29B50A3800D0421C /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
-		};
-		1CD39A2429C7CBD100783D73 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CD39A2329C7CBD100783D73 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		1CD39A2629C7CBD100783D73 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CD39A2329C7CBD100783D73 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		1CD39A2829C7CBD100783D73 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CD39A2329C7CBD100783D73 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

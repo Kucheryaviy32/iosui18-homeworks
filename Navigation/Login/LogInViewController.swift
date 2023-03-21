@@ -8,7 +8,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-//    private let nc = NotificationCenter.default
+        private let nc = NotificationCenter.default
     
     var delegate: LoginViewControllerDelegate?
     var callback: (_ authenticationData: (userService: UserService, name: String)) -> Void
@@ -44,11 +44,11 @@ class LogInViewController: UIViewController {
     lazy var loginTextField : UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
-//                loginTextField.text = "Rick" // По рекомендации преподавателя
-//        #if DEBUG
-//                loginTextField.text = "Test"
-//        #else
-//        #endif
+                        loginTextField.text = "siv@mail.ru" // По рекомендации преподавателя
+        //        #if DEBUG
+        //                loginTextField.text = "Test"
+        //        #else
+        //        #endif
         loginTextField.textColor = .black
         loginTextField.font = .systemFont(ofSize: 16, weight: .regular)
         loginTextField.autocapitalizationType = .none
@@ -63,13 +63,13 @@ class LogInViewController: UIViewController {
     
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
-                passwordTextField.placeholder = "Пароль"
-//                passwordTextField.text = "Sanchez"
-//
-//        #if DEBUG
-//                passwordTextField.text = "Test"
-//        #else
-//        #endif
+        passwordTextField.placeholder = "Пароль"
+//                        passwordTextField.text = "123123"
+        //
+        //        #if DEBUG
+        //                passwordTextField.text = "Test"
+        //        #else
+        //        #endif
         passwordTextField.textColor = .black
         passwordTextField.font = .systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
@@ -87,7 +87,7 @@ class LogInViewController: UIViewController {
         logIn.layer.cornerRadius = 10
         logIn.clipsToBounds = true
         logIn.setTitle("Вход", for: .normal)
-        logIn.titleLabel?.textColor = .white
+        //        logIn.titleLabel?.textColor = .white
         logIn.layer.shadowColor = UIColor.black.cgColor
         logIn.layer.shadowOffset = CGSize(width: 4, height: 4)
         logIn.layer.shadowOpacity = 0.7
@@ -97,13 +97,13 @@ class LogInViewController: UIViewController {
         let image = UIImage(named: "blue_pixel")
         let normalstateImage = image?.image(alpha: 1)
         let anotherstateImage = image?.image(alpha: 0.8)
-        logInButton.setBackgroundImage(normalstateImage, for: .normal)
-        logInButton.setBackgroundImage(anotherstateImage, for: .selected)
-        logInButton.setBackgroundImage(anotherstateImage, for: .highlighted)
-        logInButton.setBackgroundImage(anotherstateImage, for: .disabled)
-        logInButton.layer.cornerRadius = 10
-        logInButton.layer.masksToBounds = true
-        return logInButton
+        logIn.setBackgroundImage(normalstateImage, for: .normal)
+        logIn.setBackgroundImage(anotherstateImage, for: .selected)
+        logIn.setBackgroundImage(anotherstateImage, for: .highlighted)
+        logIn.setBackgroundImage(anotherstateImage, for: .disabled)
+        logIn.layer.cornerRadius = 10
+        logIn.layer.masksToBounds = true
+        return logIn
     }()
     
     lazy var regIn: UIButton = {
@@ -112,7 +112,7 @@ class LogInViewController: UIViewController {
         regIn.layer.cornerRadius = 10
         regIn.clipsToBounds = true
         regIn.setTitle("Регистрация", for: .normal)
-        regIn.titleLabel?.textColor = .white
+        //        regIn.titleLabel?.textColor = .white
         regIn.layer.shadowColor = UIColor.black.cgColor
         regIn.layer.shadowOffset = CGSize(width: 4, height: 4)
         regIn.layer.shadowOpacity = 0.7
@@ -123,31 +123,31 @@ class LogInViewController: UIViewController {
         let image = UIImage(named: "blue_pixel")
         let normalstateImage = image?.image(alpha: 1)
         let anotherstateImage = image?.image(alpha: 0.8)
-        logInButton.setBackgroundImage(normalstateImage, for: .normal)
-        logInButton.setBackgroundImage(anotherstateImage, for: .selected)
-        logInButton.setBackgroundImage(anotherstateImage, for: .highlighted)
-        logInButton.setBackgroundImage(anotherstateImage, for: .disabled)
-        logInButton.layer.cornerRadius = 10
-        logInButton.layer.masksToBounds = true
+        regIn.setBackgroundImage(normalstateImage, for: .normal)
+        regIn.setBackgroundImage(anotherstateImage, for: .selected)
+        regIn.setBackgroundImage(anotherstateImage, for: .highlighted)
+        regIn.setBackgroundImage(anotherstateImage, for: .disabled)
+        regIn.layer.cornerRadius = 10
+        regIn.layer.masksToBounds = true
         return regIn
     }()
     
-//    let inButton = {(vc: LogInViewController) in
-//        if let loginInspector = vc.delegate {
-//            if loginInspector.checkPassword(login: vc.loginTextField.text ?? "", password: vc.passwordTextField.text ?? "") {
-//                vc.logined()
-//            }
-//            else {
-//                let alertController = UIAlertController(title: "Ошибка авторизации",
-//                                                        message: "Неверный логин или пароль",
-//                                                        preferredStyle: .alert)
-//                let action = UIAlertAction(title: "Попробовать снова", style: .default, handler: nil)
-//                alertController.addAction(action)
-//                vc.present(alertController, animated: true, completion: nil)
-//                vc.passwordTextField.text = nil
-//            }
-//        }
-//    }
+    //    let inButton = {(vc: LogInViewController) in
+    //        if let loginInspector = vc.delegate {
+    //            if loginInspector.checkPassword(login: vc.loginTextField.text ?? "", password: vc.passwordTextField.text ?? "") {
+    //                vc.logined()
+    //            }
+    //            else {
+    //                let alertController = UIAlertController(title: "Ошибка авторизации",
+    //                                                        message: "Неверный логин или пароль",
+    //                                                        preferredStyle: .alert)
+    //                let action = UIAlertAction(title: "Попробовать снова", style: .default, handler: nil)
+    //                alertController.addAction(action)
+    //                vc.present(alertController, animated: true, completion: nil)
+    //                vc.passwordTextField.text = nil
+    //            }
+    //        }
+    //    }
     
     var queue: DispatchQueue? = nil
     
@@ -172,9 +172,6 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(logInView)
         logInView.translatesAutoresizingMaskIntoConstraints = false
         
-        logInView.addSubview(regIn)
-        regIn.translatesAutoresizingMaskIntoConstraints = false
-        
         logInView.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -190,6 +187,9 @@ class LogInViewController: UIViewController {
         logInView.addSubview(logInButton)
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         
+        logInView.addSubview(regIn)
+        regIn.translatesAutoresizingMaskIntoConstraints = false
+        
         
         NSLayoutConstraint.activate([
             
@@ -200,8 +200,7 @@ class LogInViewController: UIViewController {
             
             logInView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             logInView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            //            logInView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            logInView.widthAnchor.constraint(equalToConstant: view.frame.width / 2 -  16),
+            logInView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             logInView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             logInView.widthAnchor.constraint(equalTo:  scrollView.widthAnchor),
             
@@ -220,21 +219,22 @@ class LogInViewController: UIViewController {
             logInButton.topAnchor.constraint(equalTo: logInStackView.bottomAnchor, constant: 16),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
             logInButton.leadingAnchor.constraint(equalTo: logInView.leadingAnchor, constant: 16),
-            logInButton.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
+            logInButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2 -  16),
+//            logInButton.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
             logInButton.bottomAnchor.constraint(equalTo: logInView.bottomAnchor, constant: -16),
             
-            regIn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
-            regIn.leadingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: 16),
-            regIn.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
+            regIn.topAnchor.constraint(equalTo: logInStackView.bottomAnchor, constant: 16),
+            regIn.leadingAnchor.constraint(equalTo: logInButton.trailingAnchor, constant: 16),
+            regIn.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
             regIn.heightAnchor.constraint(equalToConstant: 50)
             
             
         ])
         
 #if release
-        userName.text = ""
+        loginTextField.text = ""
 #elseif DEBUG
-        userName.text = ""
+        loginTextField.text = "siv@mail.ru"
 #endif
     }
     
@@ -270,7 +270,6 @@ class LogInViewController: UIViewController {
     }
     
     func logined() {
-        
         let userService = CurrentUserService(name: loginTextField.text ?? "", avatar: "ProfileImage", status: "Когда уже новый сезон?")
         callback((userService: userService, name: loginTextField.text ?? ""))
     }
@@ -369,10 +368,12 @@ extension LogInViewController : UITextFieldDelegate {
 
 extension UIImage {
     func image(alpha: CGFloat) -> UIImage? {
+
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         draw(at: .zero, blendMode: .normal, alpha: alpha)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+
         return newImage
     }
 }

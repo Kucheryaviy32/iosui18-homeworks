@@ -1,5 +1,6 @@
 import UIKit
 import StorageService
+import FirebaseAnalytics
 import FirebaseCore
 
 @main

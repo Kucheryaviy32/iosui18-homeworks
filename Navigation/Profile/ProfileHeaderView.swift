@@ -2,8 +2,11 @@ import UIKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
-     lazy var profileImageView : UIImageView = {
+    static let identifire = "ProfileHeaderView"
+    
+    lazy var profileImageView : UIImageView = {
         let profileImageView = UIImageView()
+        profileImageView.image = UIImage(named: "ProfileImage")
         profileImageView.layer.cornerRadius = CGFloat(50)
         profileImageView.layer.borderWidth = 3
         profileImageView.layer.borderColor = UIColor.white.cgColor
@@ -11,22 +14,24 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return profileImageView
     }()
     
-     lazy var userNameLabel : UILabel = {
+    lazy var userNameLabel : UILabel = {
         let userNameLabel = UILabel()
+        userNameLabel.text = "Пользователь не найден"
         userNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         userNameLabel.textColor = .black
         userNameLabel.clipsToBounds = true
         return userNameLabel
     }()
     
-     lazy var statusLabel : UILabel = {
+    lazy var statusLabel : UILabel = {
         let statusLabel = UILabel()
+        statusLabel.text = ""
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
         return statusLabel
     }()
     
-     lazy var statusTextField : UITextField = {
+    lazy var statusTextField : UITextField = {
         let statusTextField = UITextField()
         statusTextField.backgroundColor = .white
         statusTextField.placeholder = "Введите новый статус"
@@ -40,7 +45,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return statusTextField
     }()
     
-    private lazy var statusButton : UIButton = {
+    lazy var statusButton : UIButton = {
         let statusButton =  UIButton()
         statusButton.setTitle("Поменять статус", for: .normal)
         statusButton.backgroundColor = .blue
@@ -56,10 +61,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }()
     
     var statusText : String = ""
-    static let identifire = "ProfileHeaderView"
     
     override init(reuseIdentifier: String?) {
-      
+        
         super.init(reuseIdentifier: reuseIdentifier)
         
         addSubview(profileImageView)
@@ -104,10 +108,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     public func initUserData(user: User) {
-          userNameLabel.text = user.name
-          profileImageView.image = user.avatar
-          statusLabel.text = user.status
-      }
+        userNameLabel.text = user.name
+        profileImageView.image = user.avatar
+        statusLabel.text = user.status
+    }
     
     @objc func statusTextChanged() {
         statusText = String(statusTextField.text!)

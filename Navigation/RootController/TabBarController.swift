@@ -12,6 +12,7 @@ class TabBarController: UITabBarController {
     
     var coordinator: UITabBarCoordinator?
     var authenticationData: (userService: UserService, name: String)?
+//    var timer: Timer? = nil
     
     var activView: UITabBarCoordinator.action {
         didSet {
