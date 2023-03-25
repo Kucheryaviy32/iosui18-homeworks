@@ -8,7 +8,7 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-        
+    
     let postStackView : UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -133,5 +133,5 @@ class FeedViewController: UIViewController {
     
     func showPost(sender: CustomButton) {
         model.getPost(sender: sender)
-}
+    }
 }

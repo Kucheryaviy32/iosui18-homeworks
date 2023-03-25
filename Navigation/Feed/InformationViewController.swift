@@ -34,11 +34,11 @@ class InformationViewController: UIViewController {
         view.backgroundColor = .cyan
         labelJSONFirst.translatesAutoresizingMaskIntoConstraints = false
         labelJSONSecond.translatesAutoresizingMaskIntoConstraints = false
-
+        
         view.addSubview(alertButton)
         view.addSubview(labelJSONFirst)
         view.addSubview(labelJSONSecond)
-
+        
         setJSONlabelFirst()
         setJSONlabelSecond()
         NSLayoutConstraint.activate([

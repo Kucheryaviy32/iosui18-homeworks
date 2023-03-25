@@ -2,7 +2,6 @@
 import UIKit
 import StorageService
 import FirebaseAuth
-import FirebaseAnalytics
 
 class ProfileViewController: UIViewController {
     
@@ -40,11 +39,11 @@ class ProfileViewController: UIViewController {
         profileTableView.backgroundColor = .white
 #endif
         let exitBarButton = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exitToProfile))
-        self.navigationItem.rightBarButtonItem  = exitBarButton
+        navigationItem.rightBarButtonItem  = exitBarButton
         
         profileTableView.dataSource = self
         profileTableView.delegate = self
-    
+        
         profileTableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifire)
         profileTableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         profileTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
@@ -60,7 +59,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        //        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func showHeader() {
@@ -125,18 +124,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-                let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifire) as! ProfileHeaderView
-
-                if let user = userService.getUser(name: userName) {
-                    headerView.initUserData(user: user)
-                }
-                return headerView
-            } else
-            { return nil }
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifire) as! ProfileHeaderView
+            
+            if let user = userService.getUser(name: userName) {
+                headerView.initUserData(user: user)
+            }
+            return headerView
+        } else
+        { return nil }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

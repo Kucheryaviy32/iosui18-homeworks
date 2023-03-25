@@ -2,12 +2,12 @@ import UIKit
 
 struct Post_old {
     var title : String
-//    var image : UIImage
-//    var info : String
+    //    var image : UIImage
+    //    var info : String
 }
 
 class PostViewController: UIViewController {
-
+    
     var post : Post_old
     let coordinator: FeedCoordinator
     
@@ -36,8 +36,8 @@ class PostViewController: UIViewController {
         
     }
     
-@objc func openInfo() {
-    coordinator.showInfoPost()
+    @objc func openInfo() {
+        coordinator.showInfoPost()
     }
     
     

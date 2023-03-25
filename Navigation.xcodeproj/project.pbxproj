@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C06B84E29B50A3800D0421C /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C06B84D29B50A3800D0421C /* iOSIntPackage */; };
+		1C16D62729CF325000FC9763 /* RealmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16D62629CF325000FC9763 /* RealmCoordinator.swift */; };
+		1C16D62929CF329B00FC9763 /* RealmSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16D62829CF329B00FC9763 /* RealmSwift.swift */; };
 		1C17BDBC29BF6287009C3CCF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17BDBB29BF6287009C3CCF /* NetworkService.swift */; };
 		1C26394E29C7CE41006720B0 /* Pods_Navigation_debug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C1F22F8CACD470D337ECAA2 /* Pods_Navigation_debug.framework */; };
 		1C26394F29C7CE44006720B0 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FDE1C6C932C350A6D4721B /* Pods_StorageService.framework */; };
@@ -105,6 +107,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C16D62629CF325000FC9763 /* RealmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinator.swift; sourceTree = "<group>"; };
+		1C16D62829CF329B00FC9763 /* RealmSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSwift.swift; sourceTree = "<group>"; };
 		1C17BDBB29BF6287009C3CCF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1C1F22F8CACD470D337ECAA2 /* Pods_Navigation_debug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation_debug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C26395029C8652C006720B0 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 				1CD702A029AFDC440072728F /* RootController */,
 				1CC0FA7E27DFC2730010CE0C /* ViewController.swift */,
 				1CC0FA8027DFC2730010CE0C /* Main.storyboard */,
+				1C16D62629CF325000FC9763 /* RealmCoordinator.swift */,
+				1C16D62829CF329B00FC9763 /* RealmSwift.swift */,
 				1C26395229C865D0006720B0 /* Login */,
 				1CC0FA8327DFC2730010CE0C /* Assets.xcassets */,
 				1CC0FA8527DFC2730010CE0C /* LaunchScreen.storyboard */,
@@ -598,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC0FA7F27DFC2730010CE0C /* ViewController.swift in Sources */,
+				1C16D62929CF329B00FC9763 /* RealmSwift.swift in Sources */,
 				1CD702A829AFDD400072728F /* ProfileCoordinator.swift in Sources */,
 				1C17BDBC29BF6287009C3CCF /* NetworkService.swift in Sources */,
 				1CC0FA7B27DFC2730010CE0C /* AppDelegate.swift in Sources */,
@@ -610,6 +617,7 @@
 				1C3AD7F72822FDAA001D3817 /* ProfileViewController.swift in Sources */,
 				1C45D5F127E2601000869E15 /* PostViewController.swift in Sources */,
 				1CD702AC29AFDDA90072728F /* FeedCoordinator.swift in Sources */,
+				1C16D62729CF325000FC9763 /* RealmCoordinator.swift in Sources */,
 				1C26395129C8652C006720B0 /* Checker.swift in Sources */,
 				1C26395429C86DDB006720B0 /* LoginFactory.swift in Sources */,
 				1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */,
@@ -841,7 +849,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -899,7 +907,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

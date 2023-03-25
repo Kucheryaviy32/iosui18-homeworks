@@ -8,7 +8,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-        private let nc = NotificationCenter.default
+    private let nc = NotificationCenter.default
     
     var delegate: LoginViewControllerDelegate?
     var callback: (_ authenticationData: (userService: UserService, name: String)) -> Void
@@ -44,11 +44,10 @@ class LogInViewController: UIViewController {
     lazy var loginTextField : UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
-                        loginTextField.text = "siv@mail.ru" // По рекомендации преподавателя
-        //        #if DEBUG
-        //                loginTextField.text = "Test"
-        //        #else
-        //        #endif
+                #if DEBUG
+        loginTextField.text = "siv@mail.ru"
+                #else
+                #endif
         loginTextField.textColor = .black
         loginTextField.font = .systemFont(ofSize: 16, weight: .regular)
         loginTextField.autocapitalizationType = .none
@@ -64,12 +63,6 @@ class LogInViewController: UIViewController {
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.placeholder = "Пароль"
-//                        passwordTextField.text = "123123"
-        //
-        //        #if DEBUG
-        //                passwordTextField.text = "Test"
-        //        #else
-        //        #endif
         passwordTextField.textColor = .black
         passwordTextField.font = .systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
@@ -220,7 +213,7 @@ class LogInViewController: UIViewController {
             logInButton.heightAnchor.constraint(equalToConstant: 50),
             logInButton.leadingAnchor.constraint(equalTo: logInView.leadingAnchor, constant: 16),
             logInButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2 -  16),
-//            logInButton.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
+            //            logInButton.trailingAnchor.constraint(equalTo: logInView.trailingAnchor, constant: -16),
             logInButton.bottomAnchor.constraint(equalTo: logInView.bottomAnchor, constant: -16),
             
             regIn.topAnchor.constraint(equalTo: logInStackView.bottomAnchor, constant: 16),
@@ -250,6 +243,18 @@ class LogInViewController: UIViewController {
         let nc = NotificationCenter.default
         nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let delegate = delegate {
+            let data = delegate.checkUserToDataBase { [weak self] user in
+                self?.loginTextField.text = user.name
+                DispatchQueue.main.async {
+                    self?.logined()
+                }
+            }
+        }
     }
     
     @objc private func kbdShow(notification: NSNotification) {
@@ -368,12 +373,12 @@ extension LogInViewController : UITextFieldDelegate {
 
 extension UIImage {
     func image(alpha: CGFloat) -> UIImage? {
-
+        
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         draw(at: .zero, blendMode: .normal, alpha: alpha)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
         return newImage
     }
 }

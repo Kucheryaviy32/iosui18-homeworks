@@ -52,7 +52,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-                
+        
         [stackView, titleLabel, titleButton].forEach {contentView.addSubview($0)}
         
         for i in 0...3 {
@@ -88,18 +88,18 @@ class PhotosTableViewCell: UITableViewCell {
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
+            
         ])
         stackView.arrangedSubviews.forEach(
             {
                 [$0.widthAnchor.constraint(greaterThanOrEqualToConstant: (stackView.frame.width - 16) / 4),
                  $0.heightAnchor.constraint(equalTo: $0.widthAnchor)].forEach({$0.isActive = true})
-
+                
             })
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
     }
-
+    
 }

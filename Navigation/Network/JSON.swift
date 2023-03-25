@@ -20,7 +20,7 @@ struct JSONSecond: Decodable {
     let residents, films: [String]
     let created, edited: String
     let url: String
-
+    
     enum CodingKeys: String, CodingKey {
         case name
         case rotationPeriod = "rotation_period"

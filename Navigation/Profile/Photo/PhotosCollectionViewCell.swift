@@ -9,7 +9,7 @@
 import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
-
+    
     static let identifire = "PhotosCollectionViewCell"
     
     let photo: UIImageView = {

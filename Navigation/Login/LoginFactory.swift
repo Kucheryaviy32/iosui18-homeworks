@@ -7,12 +7,12 @@
 
 import Foundation
 
- protocol LoginFactory {
-     func createLoginInspector() -> LoginViewControllerDelegate
- }
+protocol LoginFactory {
+    func createLoginInspector() -> LoginViewControllerDelegate
+}
 
- class MyLoginFactory: LoginFactory {
-     func createLoginInspector() -> LoginViewControllerDelegate {
-         LoginInspector()
-     }
- }
+class MyLoginFactory: LoginFactory {
+    func createLoginInspector() -> LoginViewControllerDelegate {
+        LoginInspector()
+    }
+}

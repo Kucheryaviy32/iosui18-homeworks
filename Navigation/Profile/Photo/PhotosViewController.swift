@@ -10,7 +10,7 @@ import UIKit
 import iOSIntPackage
 
 class PhotosViewController: UIViewController {
-
+    
     let imagePublisherFacade = ImagePublisherFacade()
     
     lazy var layout: UICollectionViewFlowLayout = {
@@ -33,7 +33,7 @@ class PhotosViewController: UIViewController {
     var timer: Timer? = nil
     
     override func viewDidLoad() {
-       
+        
         super.viewDidLoad()
         title = "Фотогалерея"
         view.backgroundColor = .white
@@ -42,31 +42,31 @@ class PhotosViewController: UIViewController {
         useConstraint()
         
         let imageProcessor = ImageProcessor()
-                 imageProcessor.processImagesOnThread(sourceImages: constPhotoArray, filter: .chrome, qos: .background) {cgImages in
-                     let images = cgImages.map({UIImage(cgImage: $0!)})
-                     self.contentPhotoData.removeAll()
-                     images.forEach({self.contentPhotoData.append($0)})
-                     DispatchQueue.main.async{
-                         self.collectionView.reloadData()
-                     }
-                 }
-                 timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-
-                 /*
-                  .default - 0.6800000000000004 сек
-                  .background - 2.719999999999986 сек
-                  .userInitiated - 0.6900000000000004 сек
-                  .userInteractive - 0.6900000000000004 сек
-                  .utility - 0.6800000000000004 сек
-                 */
-             }
-
-             @objc func updateTimer() {
-                 timerCount += 0.01
-                 if contentPhotoData.count > 0 {
-                     print("Потрачено \(self.timerCount) секунд")
-                     timer!.invalidate()
-                 }
+        imageProcessor.processImagesOnThread(sourceImages: constPhotoArray, filter: .chrome, qos: .background) {cgImages in
+            let images = cgImages.map({UIImage(cgImage: $0!)})
+            self.contentPhotoData.removeAll()
+            images.forEach({self.contentPhotoData.append($0)})
+            DispatchQueue.main.async{
+                self.collectionView.reloadData()
+            }
+        }
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
+        /*
+         .default - 0.6800000000000004 сек
+         .background - 2.719999999999986 сек
+         .userInitiated - 0.6900000000000004 сек
+         .userInteractive - 0.6900000000000004 сек
+         .utility - 0.6800000000000004 сек
+         */
+    }
+    
+    @objc func updateTimer() {
+        timerCount += 0.01
+        if contentPhotoData.count > 0 {
+            print("Потрачено \(self.timerCount) секунд")
+            timer!.invalidate()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,11 +81,11 @@ class PhotosViewController: UIViewController {
                                      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
     
-
+    
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         contentPhotoData.count
     }
@@ -110,7 +110,7 @@ extension PhotosViewController: ImageLibrarySubscriber {
         
         images.forEach({ image in
             if contentPhotoData.contains(where: {image == $0}) {
-               return
+                return
             }
             else {
                 contentPhotoData.append(image)
