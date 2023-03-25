@@ -1,5 +1,5 @@
 PODS:
-  - FirebaseAuth (10.6.0):
+    - FirebaseAuth (10.6.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
     - GoogleUtilities/Environment (~> 7.8)

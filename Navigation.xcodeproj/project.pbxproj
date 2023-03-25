@@ -60,6 +60,7 @@
 		1CD702AA29AFDD800072728F /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD702A929AFDD800072728F /* FeedModel.swift */; };
 		1CD702AC29AFDDA90072728F /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD702AB29AFDDA90072728F /* FeedCoordinator.swift */; };
 		1CF865C429C3688300DB8739 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF865C329C3688300DB8739 /* JSON.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		87B20E00897CBFBD42F28233 /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		A66835971DE20D8E39996157 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		CE16BD9DADE3B5AFB2AC7728 /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			files = (
 				1C26394E29C7CE41006720B0 /* Pods_Navigation_debug.framework in Frameworks */,
 				1C85F2AF28A91F580021D27F /* StorageService.framework in Frameworks */,
+				82C69EC626AF35BDFC93B786 /* Pods_Navigation_debug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C0B36D7290A96D20090F322 /* iOSIntPackage in Frameworks */,
 				1C85F29828A91B1B0021D27F /* StorageService.framework in Frameworks */,
 				1C06B84E29B50A3800D0421C /* iOSIntPackage in Frameworks */,
 				1C5BF1ED29C8BB79006EAC75 /* Pods_Navigation.framework in Frameworks */,
@@ -270,6 +274,7 @@
 				1C85F2BA28A91F580021D27F /* Navigation copy-Info.plist */,
 				11F45495152B1181A46E3325 /* Pods */,
 				BB81BA6FD818A0A9F4B29987 /* Frameworks */,
+
 			);
 			sourceTree = "<group>";
 		};
