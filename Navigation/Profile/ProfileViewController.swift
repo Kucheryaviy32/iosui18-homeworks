@@ -1,7 +1,8 @@
 
 import UIKit
 import StorageService
-
+import FirebaseAuth
+import FirebaseAnalytics
 
 class ProfileViewController: UIViewController {
     
@@ -16,13 +17,14 @@ class ProfileViewController: UIViewController {
     }()
     
     let massivFeed = Post.postFeed()
+    let userName: String
+    let userService: UserService
+    let coordinator: ProfileCoordinator
     
-    let uService: UserService
-    let coordinator: VCCoordinator
-    
-    init(coordinator: VCCoordinator, userService: UserService){
-        self.uService = userService
+    init(coordinator: ProfileCoordinator, userService: UserService, name: String){
+        self.userService = userService
         self.coordinator = coordinator
+        self.userName = name
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,15 +33,19 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
 #if DEBUG
         profileTableView.backgroundColor = .systemRed
 #else
         profileTableView.backgroundColor = .white
 #endif
+        let exitBarButton = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exitToProfile))
+        self.navigationItem.rightBarButtonItem  = exitBarButton
         
-        super.viewDidLoad()
-        
+        profileTableView.dataSource = self
+        profileTableView.delegate = self
+    
+        profileTableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifire)
         profileTableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         profileTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
         
@@ -52,7 +58,43 @@ class ProfileViewController: UIViewController {
             profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    func showHeader() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        DispatchQueue.global().async {
+            sleep(3)
+            DispatchQueue.main.async {
+                self.dismisHeader()
+            }
+        }
+    }
+    
+    func dismisHeader() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func updatePostArray() {
+        profileTableView.reloadData()
+        profileTableView.refreshControl?.endRefreshing()
+        showHeader()
+    }
+    
+    @objc func exitToProfile() {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            coordinator.DissmisApp()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
 }
+
 
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -83,17 +125,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if section == 0 {
-            let header = ProfileHeaderView()
-            header.userNameLabel.text = uService.user.name
-            header.profileImageView.image = uService.user.avatar
-            header.statusLabel.text = uService.user.status
-            return header
-        } else
-        { return nil }
+                let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifire) as! ProfileHeaderView
+
+                if let user = userService.getUser(name: userName) {
+                    headerView.initUserData(user: user)
+                }
+                return headerView
+            } else
+            { return nil }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

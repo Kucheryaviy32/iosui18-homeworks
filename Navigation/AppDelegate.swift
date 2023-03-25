@@ -1,5 +1,7 @@
 import UIKit
 import StorageService
+import FirebaseAnalytics
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,18 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                
                let tabBarController = rootCoordinator.startApp(authenticationData: nil)
                 
-        let appConfiguration = getRandomConfiguration()
-        NetworkService.URLSessionDataTask(appConfiguration)
-
+//        let appConfiguration = getRandomConfiguration()
+//        NetworkService.URLSessionDataTask(appConfiguration)
+        
                self.window?.rootViewController = tabBarController
                self.window?.makeKeyAndVisible()
+        
+        FirebaseApp.configure()
         
         return true
     }
     
-    private func getRandomConfiguration() -> AppConfiguration {
-          let array: [AppConfiguration] = [.species, .vehicles, .starships]
-          return array[Int.random(in: 1...2)]
-      }
+//    private func getRandomConfiguration() -> AppConfiguration {
+//          let array: [AppConfiguration] = [.species, .vehicles, .starships]
+//          return array[Int.random(in: 1...2)]
+//      }
     
 }

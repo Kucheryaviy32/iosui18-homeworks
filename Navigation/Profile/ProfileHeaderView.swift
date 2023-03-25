@@ -1,10 +1,13 @@
 import UIKit
 import SnapKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
-     lazy var profileImageView : UIImageView = {
+    static let identifire = "ProfileHeaderView"
+    
+    lazy var profileImageView : UIImageView = {
         let profileImageView = UIImageView()
+        profileImageView.image = UIImage(named: "ProfileImage")
         profileImageView.layer.cornerRadius = CGFloat(50)
         profileImageView.layer.borderWidth = 3
         profileImageView.layer.borderColor = UIColor.white.cgColor
@@ -12,22 +15,24 @@ class ProfileHeaderView: UIView {
         return profileImageView
     }()
     
-     lazy var userNameLabel : UILabel = {
+    lazy var userNameLabel : UILabel = {
         let userNameLabel = UILabel()
+        userNameLabel.text = "Пользователь не найден"
         userNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         userNameLabel.textColor = .black
         userNameLabel.clipsToBounds = true
         return userNameLabel
     }()
     
-     lazy var statusLabel : UILabel = {
+    lazy var statusLabel : UILabel = {
         let statusLabel = UILabel()
+        statusLabel.text = ""
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
         return statusLabel
     }()
     
-     lazy var statusTextField : UITextField = {
+    lazy var statusTextField : UITextField = {
         let statusTextField = UITextField()
         statusTextField.backgroundColor = .white
         statusTextField.placeholder = "Введите новый статус"
@@ -41,7 +46,7 @@ class ProfileHeaderView: UIView {
         return statusTextField
     }()
     
-    private lazy var statusButton : UIButton = {
+    lazy var statusButton : UIButton = {
         let statusButton =  UIButton()
         statusButton.setTitle("Поменять статус", for: .normal)
         statusButton.backgroundColor = .blue
@@ -58,8 +63,9 @@ class ProfileHeaderView: UIView {
     
     var statusText : String = ""
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        
+        super.init(reuseIdentifier: reuseIdentifier)
         
         addSubview(profileImageView)
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,6 +115,12 @@ class ProfileHeaderView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func initUserData(user: User) {
+        userNameLabel.text = user.name
+        profileImageView.image = user.avatar
+        statusLabel.text = user.status
     }
     
     @objc func statusTextChanged() {
