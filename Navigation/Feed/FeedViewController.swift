@@ -9,101 +9,43 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    let postStackView : UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 10
-        stack.alignment = .fill
-        stack.backgroundColor = .clear
-        return stack
-    }()
-    
-    lazy var firstButton: CustomButton = {
-        let button = CustomButton(vc: self,
-                                  text: "Пост 1",
-                                  backgroundColor: .blue,
-                                  backgroundImage: nil,
-                                  tag: 0,
-                                  shadow: true) {
-            (vc: UIViewController, sender: CustomButton) in
-            self.showPost(sender: sender)
-        }
-        
-        button.layer.cornerRadius = 4
-        return button
-    }()
-    
-    lazy var secondButton: CustomButton = {
-        let button =  CustomButton(vc: self,
-                                   text: "Пост 2",
-                                   backgroundColor: .blue,
-                                   backgroundImage: nil,
-                                   tag: 1,
-                                   shadow: true) {
-            (vc: UIViewController, sender: CustomButton) in
-            self.showPost(sender: sender)
-        }
-        button.layer.cornerRadius = 4
-        
-        return button
-    }()
-    
-    lazy var answerTextField: UITextField = {
-        let textField = UITextField()
-        textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        textField.placeholder = "Введите Green =)"
-        textField.textColor = .black
-        textField.backgroundColor = .white
-        textField.textAlignment = .natural
-        textField.layer.cornerRadius = 12
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
-        textField.leftViewMode = .always
-        return textField
-    }()
-    
-    lazy var answerButton: CustomButton = {
-        let button = CustomButton(vc: self,
-                                  text: "Проверить текст",
-                                  backgroundColor: .blue,
-                                  backgroundImage: nil,
-                                  tag: 0,
-                                  shadow: true) {
-            (vc:UIViewController, sender: CustomButton) in
-            if self.model.check(word: self.answerTextField.text!) {sender.notification = {self.indicationLabel.textColor = .green
-                self.indicationLabel.text = "Верно"
-            }}
-            else {
-                sender.notification = {self.indicationLabel.textColor = .red
-                    self.indicationLabel.text = "Про Green для кого написано?"
-                    
-                }
-            }
-        }
-        
-        button.layer.cornerRadius = 4
-        button.addTextField(textField: answerTextField)
-        return button
-    }()
-    
-    lazy var indicationLabel : UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
-    
     var coordinator: FeedCoordinator
     var model: FeedModel
+    var dbCoordinator: DatabaseCoordinatable
     
-    init(coordinator: FeedCoordinator, model: FeedModel) {
+    lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        layout.scrollDirection = .vertical
+        return layout
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.toAutoLayout()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.isUserInteractionEnabled = true
+        return collectionView
+    }()
+    
+    var contentPostData: [FeedPost] = []
+    var favoritePostId = [Int]()
+    
+    init(coordinator: FeedCoordinator, model: FeedModel, dbCoordinator: DatabaseCoordinatable) {
         self.model = model
         self.coordinator = coordinator
+        self.dbCoordinator = dbCoordinator
         super.init(nibName: nil, bundle: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(removePostFromFavorites(_:)),
+                                               name: .didRemovePostFromFavorites,
+                                               object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required init?(coder: NSCoder) {
@@ -112,26 +54,119 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Новости"
-        self.view.backgroundColor = .white
-        view.addSubview(postStackView)
-        postStackView.insertArrangedSubview(firstButton, at: 0)
-        postStackView.insertArrangedSubview(secondButton, at: 1)
-        postStackView.insertArrangedSubview(answerTextField, at: 2)
-        postStackView.insertArrangedSubview(answerButton, at: 3)
-        postStackView.insertArrangedSubview(indicationLabel, at: 4)
-        postStackView.autoresizesSubviews = true
-        postStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            postStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            postStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            postStackView.widthAnchor.constraint(equalToConstant: 200),
-            postStackView.heightAnchor.constraint(equalToConstant: 250),
-        ])
+        title = "Новости"
+        
+        view.addSubview(collectionView)
+        collectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifire)
+        contentPostData = model.getPost()
+        useConstraint()
     }
     
-    func showPost(sender: CustomButton) {
-        model.getPost(sender: sender)
+    
+    func useConstraint() {
+        NSLayoutConstraint.activate([collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                                     collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                                     collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+        
+        getFavoritePost()
+    }
+    
+    func getFavoritePost() {
+        self.dbCoordinator.fetchAll(FavoriteFeedPost.self) { result in
+            switch result {
+            case .success(let FavoriteFeedPost):
+                self.favoritePostId = FavoriteFeedPost.map{ Int($0.id) }
+                self.collectionView.reloadData()
+            case .failure(let error):
+                print("Ошибка загрузки из БД \(error)")
+            }
+        }
+    }
+    
+    private func savePostInDatabase(_ post: FeedPost, using data: [FeedPost]) {
+        self.dbCoordinator.create(FavoriteFeedPost.self, keyedValues: [post.keyedValues]) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let post):
+                self.favoritePostId.append(Int(post[0].id))
+                NotificationCenter.default.post(name: .wasLikedPost, object: nil, userInfo: ["post" : FeedPost(PostCoreDataModel: post[0])])
+                self.collectionView.reloadData()
+            case .failure(let error):
+                print("Ошибка записи из бд \(error)")
+            }
+        }
+    }
+    
+    @objc func removePostFromFavorites(_ notification: NSNotification) {
+        if let id = notification.userInfo?["id"] as? Int {
+            self.favoritePostId.removeAll(where: { $0 == id })
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func removePostFromDatabase(_ post: FeedPost, using data: [FeedPost]) {
+        let predicate = NSPredicate(format: "id == %ld", post.id)
+        
+        self.favoritePostId.removeAll(where: { $0 == post.id })
+        self.collectionView.reloadData()
+        
+        NotificationCenter.default.post(name: .didRemovePostFromFavorites, object: nil, userInfo: ["id" : post.id])
+        
+        self.dbCoordinator.delete(FavoriteFeedPost.self, predicate: predicate) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let post):
+                print("Объект удален из бд")
+            case .failure(let error):
+                print("Ошибка удаления из бд \(error )")
+            }
+        }
+    }
+    
+}
+
+extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.identifire, for: indexPath) as? PostCollectionViewCell
+        else {
+            preconditionFailure("Ошибка при открытии")
+            return UICollectionViewCell()
+        }
+        cell.setupPost(contentPostData[indexPath.item], isFavorite: favoritePostId.contains(contentPostData[indexPath.item].id))
+        cell.delegate = self
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        contentPostData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (collectionView.frame.width - 40), height: (collectionView.frame.width - 40))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+}
+
+extension FeedViewController: PostCollectionViewCellDelegate {
+    func showPost(post: FeedPost) {
+        self.coordinator.showPost(post)
+    }
+    
+    
+    func tapToPost(with post: FeedPost, isFavorite: Bool) {
+        if isFavorite {
+            self.removePostFromDatabase(post, using: [post])
+        } else {
+            self.savePostInDatabase(post, using: [post])
+        }
     }
 }

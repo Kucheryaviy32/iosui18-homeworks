@@ -34,3 +34,65 @@ enum AppError: Error {
     case badData
     case internalServer
 }
+
+extension NSNotification.Name {
+    static let wasLikedPost = NSNotification.Name("wasLikedPost")
+    static let didRemovePostFromFavorites = NSNotification.Name("didRemovePostFromFavorites")
+}
+
+extension String {
+    
+    static let empty = ""
+    static let whitespace: Character = " "
+    
+    var isFirstCharacterWhitespace: Bool {
+        return self.first == Self.whitespace
+    }
+    
+    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ssZ") -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+    
+    func replace(_ pattern: String, replacement: String) throws -> String {
+        let regex = try NSRegularExpression(pattern: pattern, options: [.caseInsensitive])
+        return regex.stringByReplacingMatches(in: self,
+                                              options: [.withTransparentBounds],
+                                              range: NSRange(location: 0, length: self.count),
+                                              withTemplate: replacement)
+    }
+    
+    static func randomString(length: Int = 36) -> Self {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        return String((0..<length).compactMap { _ in letters.randomElement() })
+    }
+}
+
+struct Const {
+    
+    static let leadingMargin: CGFloat = 16
+    static let trailingMargin: CGFloat = -16
+    static let indent: CGFloat = 16
+    static let smallIndent: CGFloat = 8
+    static let smallSize: CGFloat = 20
+    static let size: CGFloat = 50
+    static let bigSize: CGFloat = 100
+    static let bigIndent: CGFloat = 120
+    
+}
+
+public extension UIView {
+
+    func toAutoLayout() {
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    func addSubviews(_ subviews: UIView...) {
+        subviews.forEach { addSubview($0) }
+    }
+
+}

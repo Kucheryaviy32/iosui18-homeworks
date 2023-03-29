@@ -8,7 +8,6 @@ target 'Navigation' do
   # Pods for Navigation
   pod 'FirebaseCore'
   pod 'FirebaseAuth'
-  pod 'RealmSwift', '~> 10.37'
 
 end
 

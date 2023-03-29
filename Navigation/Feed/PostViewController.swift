@@ -1,17 +1,11 @@
 import UIKit
 
-struct Post_old {
-    var title : String
-    //    var image : UIImage
-    //    var info : String
-}
-
 class PostViewController: UIViewController {
+
+    var post: FeedPost
+    var coordinator: VCCoordinator
     
-    var post : Post_old
-    let coordinator: FeedCoordinator
-    
-    init(coordinator: FeedCoordinator, post: Post_old) {
+    init(coordinator: VCCoordinator, post: FeedPost) {
         self.post = post
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -21,24 +15,40 @@ class PostViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var postTitle: String?
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        view.backgroundColor = .cyan
+        let infoBarButtonItem = UIBarButtonItem(title: "Инфо", style: .plain, target: self, action: #selector(showInfo))
+        self.navigationItem.rightBarButtonItem  = infoBarButtonItem
+      
+        view.backgroundColor = UIColor.lightGray
         
-        self.title = postTitle
+        title = post.title
         
-        let informationBarItem: UIBarButtonItem = UIBarButtonItem(title: "Информация", style: .plain, target: self, action: #selector(openInfo))
-        
-        navigationItem.rightBarButtonItem = informationBarItem
+        let image = UIImageView(image: post.image)
+        image.toAutoLayout()
+        image.contentMode = .scaleAspectFit
+       
+        view.addSubview(image)
+       
+        NSLayoutConstraint.activate([image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     image.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
         
     }
     
-    @objc func openInfo() {
-        coordinator.showInfoPost()
+    @objc func showInfo() {
+        NetworkService.URLSessionDataTask(postInfo: post.info, type: post.postType) { title, people in
+            DispatchQueue.main.async {
+                guard let coordinator = self.coordinator as? FeedCoordinator else {
+                    let coordinator = self.coordinator as? FavoriteCoordinator
+                    coordinator?.showInfo(title, people: people)
+                    return
+                }
+                coordinator.showInfo(title, people: people)
+            }
+        }
+        
     }
-    
-    
+
 }

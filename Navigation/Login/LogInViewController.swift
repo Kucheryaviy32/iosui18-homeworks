@@ -246,17 +246,6 @@ class LogInViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if let delegate = delegate {
-            let data = delegate.checkUserToDataBase { [weak self] user in
-                self?.loginTextField.text = user.name
-                DispatchQueue.main.async {
-                    self?.logined()
-                }
-            }
-        }
-    }
-    
     @objc private func kbdShow(notification: NSNotification) {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             scrollView.contentInset.bottom = kbdSize.height

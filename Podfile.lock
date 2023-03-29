@@ -27,16 +27,10 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (3.1.0)
   - PromisesObjC (2.2.0)
-  - Realm (10.37.0):
-    - Realm/Headers (= 10.37.0)
-  - Realm/Headers (10.37.0)
-  - RealmSwift (10.37.0):
-    - Realm (= 10.37.0)
 
 DEPENDENCIES:
   - FirebaseAuth
   - FirebaseCore
-  - RealmSwift (~> 10.37)
 
 SPEC REPOS:
   trunk:
@@ -46,8 +40,6 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - PromisesObjC
-    - Realm
-    - RealmSwift
 
 SPEC CHECKSUMS:
   FirebaseAuth: dd64c01631df724b09f33e584625775c52f7d71f
@@ -56,9 +48,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
-  Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
-  RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
 
-PODFILE CHECKSUM: 78ffe62cae7de05c8f73879d713aea44fab46851
+PODFILE CHECKSUM: 91217422b53073428a536dc9e92d2fc4cfb96a6a
 
 COCOAPODS: 1.12.0

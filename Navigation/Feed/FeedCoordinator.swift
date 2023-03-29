@@ -12,20 +12,17 @@ class FeedCoordinator: VCCoordinator {
     
     var navigationController: UINavigationController?
     
-    func Start() -> UINavigationController? {
+    func Start() throws -> UINavigationController? {
         let factory = RootFactory(state: .feed)
         navigationController = factory.startModule(coordinator: self, data: nil)
         return navigationController
     }
     
-    func pushPost(post: Post_old) {
-        let postViewController = PostViewController(coordinator: self, post: post)
-        self.navigationController?.pushViewController(postViewController, animated: true)
+    func showPost(_ post: FeedPost) {
+        navigationController?.pushViewController(PostViewController(coordinator: self, post: post), animated: true)
     }
     
-    func showInfoPost() {
-        let infoViewController = InformationViewController()
-        navigationController!.present(infoViewController, animated: true, completion: nil)
+    func showInfo(_ title: String, people: [String]?) {
+        navigationController?.present(InfoViewController(title: title, residentUrl: people), animated: true)
     }
-    
 }
