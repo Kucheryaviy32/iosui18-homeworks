@@ -14,6 +14,7 @@ final class RootFactory {
         case feed
         case profile
         case favorite
+        case map
     }
     
     var state: State
@@ -68,28 +69,41 @@ final class RootFactory {
             favoriteNavigationController.navigationBar.standardAppearance = appearance;
             favoriteNavigationController.navigationBar.scrollEdgeAppearance = favoriteNavigationController.navigationBar.standardAppearance
             return favoriteNavigationController
+            
+            
+        case .map:
+            
+            let mapViewController = MapsViewController()
+            mapViewController.view.backgroundColor = UIColor.white
+            let mapNavigationController = UINavigationController(rootViewController: mapViewController)
+            
+            mapNavigationController.tabBarItem = UITabBarItem(title: "Карта", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
+            mapNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
+            mapNavigationController.navigationBar.barTintColor = UIColor.white
+            mapNavigationController.navigationBar.standardAppearance = appearance;
+            mapNavigationController.navigationBar.scrollEdgeAppearance = mapNavigationController.navigationBar.standardAppearance
+            return mapNavigationController
         }
+        
         return nil
     }
     
-
-
-private func CreateDataBase() -> DatabaseCoordinatable {
-    let bundle = Bundle.main
-    guard let url = bundle.url(forResource: "PostCoreDataModel", withExtension: "momd") else {
-        fatalError("Can't find DatabaseDemo.xcdatamodelId in main Bundle")
-    }
-    
-    switch CoreDataCoordinator.create(url: url) {
-    case .success(let database):
-        return database
-    case .failure:
+    private func CreateDataBase() -> DatabaseCoordinatable {
+        let bundle = Bundle.main
+        guard let url = bundle.url(forResource: "PostCoreDataModel", withExtension: "momd") else {
+            fatalError("Can't find DatabaseDemo.xcdatamodelId in main Bundle")
+        }
+        
         switch CoreDataCoordinator.create(url: url) {
         case .success(let database):
             return database
-        case .failure(let error):
-            fatalError("Unable to create CoreData Database. Error - \(error.localizedDescription)")
+        case .failure:
+            switch CoreDataCoordinator.create(url: url) {
+            case .success(let database):
+                return database
+            case .failure(let error):
+                fatalError("Unable to create CoreData Database. Error - \(error.localizedDescription)")
+            }
         }
     }
-}
 }

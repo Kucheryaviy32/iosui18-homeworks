@@ -22,6 +22,8 @@
 		1C3AD7F9282308B2001D3817 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */; };
 		1C45D5F127E2601000869E15 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C45D5F027E2601000869E15 /* PostViewController.swift */; };
 		1C5BF1ED29C8BB79006EAC75 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7D7B65456463A55530B76 /* Pods_Navigation.framework */; };
+		1C613E4729E48A0900B34392 /* MapsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C613E4629E48A0900B34392 /* MapsCoordinator.swift */; };
+		1C613E4929E48A2300B34392 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C613E4829E48A2300B34392 /* MapsViewController.swift */; };
 		1C6B567429D48325007F8F95 /* CoreDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B567329D48325007F8F95 /* CoreDataCoordinator.swift */; };
 		1C6B567629D4834F007F8F95 /* DataBaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B567529D4834F007F8F95 /* DataBaseCoordinator.swift */; };
 		1C6B567929D483E5007F8F95 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B567829D483E5007F8F95 /* Favorite.swift */; };
@@ -123,6 +125,8 @@
 		1C3AD7F62822FDAA001D3817 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1C3AD7F8282308B2001D3817 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1C45D5F027E2601000869E15 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		1C613E4629E48A0900B34392 /* MapsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsCoordinator.swift; sourceTree = "<group>"; };
+		1C613E4829E48A2300B34392 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		1C6B567329D48325007F8F95 /* CoreDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCoordinator.swift; sourceTree = "<group>"; };
 		1C6B567529D4834F007F8F95 /* DataBaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseCoordinator.swift; sourceTree = "<group>"; };
 		1C6B567829D483E5007F8F95 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -236,6 +240,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		1C613E4529E489F800B34392 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				1C613E4629E48A0900B34392 /* MapsCoordinator.swift */,
+				1C613E4829E48A2300B34392 /* MapsViewController.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
 		1C6B567729D483B6007F8F95 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,21 +337,22 @@
 		1CC0FA7927DFC2730010CE0C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				1C26395729C8A52C006720B0 /* GoogleService-Info.plist */,
-				1C3AD7F52822FC4A001D3817 /* Profile */,
+				1CC0FA7A27DFC2730010CE0C /* AppDelegate.swift */,
+				1CC0FA8327DFC2730010CE0C /* Assets.xcassets */,
+				1C6B567729D483B6007F8F95 /* Database */,
+				1C6B567E29D48469007F8F95 /* Favorite */,
 				1C9C911029706C0400045BAC /* Feed */,
 				1C9C910D297067E900045BAC /* General */,
-				1CC0FA7A27DFC2730010CE0C /* AppDelegate.swift */,
+				1C26395729C8A52C006720B0 /* GoogleService-Info.plist */,
+				1C613E4529E489F800B34392 /* Maps */,
+				1CC0FA8827DFC2730010CE0C /* Info.plist */,
+				1CC0FA8527DFC2730010CE0C /* LaunchScreen.storyboard */,
+				1C26395229C865D0006720B0 /* Login */,
+				1CC0FA8027DFC2730010CE0C /* Main.storyboard */,
 				1CF865C229C3687000DB8739 /* Network */,
+				1C3AD7F52822FC4A001D3817 /* Profile */,
 				1CD702A029AFDC440072728F /* RootController */,
 				1CC0FA7E27DFC2730010CE0C /* ViewController.swift */,
-				1CC0FA8027DFC2730010CE0C /* Main.storyboard */,
-				1C6B567729D483B6007F8F95 /* Database */,
-				1C26395229C865D0006720B0 /* Login */,
-				1CC0FA8327DFC2730010CE0C /* Assets.xcassets */,
-				1CC0FA8527DFC2730010CE0C /* LaunchScreen.storyboard */,
-				1CC0FA8827DFC2730010CE0C /* Info.plist */,
-				1C6B567E29D48469007F8F95 /* Favorite */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -637,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C613E4729E48A0900B34392 /* MapsCoordinator.swift in Sources */,
 				1C6B567D29D4844D007F8F95 /* FavoriteViewCell.swift in Sources */,
 				1CC0FA7F27DFC2730010CE0C /* ViewController.swift in Sources */,
 				1CD702A829AFDD400072728F /* ProfileCoordinator.swift in Sources */,
@@ -663,6 +678,7 @@
 				1CF865C429C3688300DB8739 /* JSON.swift in Sources */,
 				1C6B56A829D4B937007F8F95 /* PostCoreDataModel.xcdatamodeld in Sources */,
 				1C973549294B78C3002DC020 /* General.swift in Sources */,
+				1C613E4929E48A2300B34392 /* MapsViewController.swift in Sources */,
 				1C973542294B7202002DC020 /* PhotosTableViewCell.swift in Sources */,
 				1CC33B29290ACFF9005D6C87 /* UserData.swift in Sources */,
 				1C973544294B7253002DC020 /* PhotosViewController.swift in Sources */,
@@ -886,6 +902,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = " Использование геопозиции для выполнения ДЗ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Использование геопозиции для выполнения ДЗ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = " Использование геопозиции для выполнения ДЗ";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -944,6 +963,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = " Использование геопозиции для выполнения ДЗ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = " Использование геопозиции для выполнения ДЗ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = " Использование геопозиции для выполнения ДЗ";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

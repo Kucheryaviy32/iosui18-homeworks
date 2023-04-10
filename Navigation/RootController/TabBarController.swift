@@ -54,10 +54,13 @@ class TabBarController: UITabBarController {
                 let profileNavigationController = try profileCoordinator.Start()
                 let favoriteCoordinator = FavoriteCoordinator()
                 let favoriteNavigationController = try favoriteCoordinator.Start()
+                let mapCoordinator = MapsCoordinator()
+                let mapNavigationController = try mapCoordinator.Start()
                 if let feedNavC = feedNavigationController,
                    let profileNavC = profileNavigationController,
-                   let favNavC = favoriteNavigationController {
-                    self.viewControllers = [profileNavC, feedNavC,  favNavC]
+                   let favNavC = favoriteNavigationController,
+                   let mapNavC = mapNavigationController {
+                    self.viewControllers = [profileNavC, feedNavC,  favNavC, mapNavC]
                 }
             } catch {
                 preconditionFailure("Критическая ошибка")
@@ -97,10 +100,13 @@ class TabBarController: UITabBarController {
                 let profileNavigationController = try  profileCoordinator.Start()
                 let favoriteCoordinator = FavoriteCoordinator()
                 let favoriteNavigationController = try favoriteCoordinator.Start()
+                let mapCoordinator = MapsCoordinator()
+                let mapNavigationController = try mapCoordinator.Start()
                 if let feedNavC = feedNavigationController,
                    let profileNavC = profileNavigationController,
-                   let favNavC = favoriteNavigationController {
-                    self.viewControllers = [profileNavC, feedNavC,  favNavC]
+                   let favNavC = favoriteNavigationController,
+                   let mapNavC = mapNavigationController {
+                    self.viewControllers = [profileNavC, feedNavC,  favNavC, mapNavC]
                 }
             } catch {
                 fatalError()
