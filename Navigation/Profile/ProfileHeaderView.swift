@@ -34,7 +34,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     lazy var statusTextField : UITextField = {
         let statusTextField = UITextField()
         statusTextField.backgroundColor = .white
-        statusTextField.placeholder = "Введите новый статус"
+        statusTextField.placeholder = LocalizedService.getText(key: .insertNewStatus)
         statusTextField.textAlignment = NSTextAlignment.center
         statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
         statusTextField.textColor = .gray
@@ -47,7 +47,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     lazy var statusButton : UIButton = {
         let statusButton =  UIButton()
-        statusButton.setTitle("Поменять статус", for: .normal)
+        statusButton.setTitle(LocalizedService.getText(key: .changeStatus), for: .normal)
         statusButton.backgroundColor = .blue
         statusButton.layer.cornerRadius = 4
         statusButton.setTitleColor(.white, for: .normal)

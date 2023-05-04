@@ -43,7 +43,7 @@ class LogInViewController: UIViewController {
     
     lazy var loginTextField : UITextField = {
         let loginTextField = UITextField()
-        loginTextField.placeholder = "Введите логин"
+        loginTextField.placeholder = LocalizedService.getText(key: .insertLogIn)
                 #if DEBUG
         loginTextField.text = "siv@mail.ru"
                 #else
@@ -62,7 +62,7 @@ class LogInViewController: UIViewController {
     
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
-        passwordTextField.placeholder = "Пароль"
+        passwordTextField.placeholder = LocalizedService.getText(key: .insertPassword)
         passwordTextField.textColor = .black
         passwordTextField.font = .systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
@@ -79,7 +79,7 @@ class LogInViewController: UIViewController {
         logIn.translatesAutoresizingMaskIntoConstraints = false
         logIn.layer.cornerRadius = 10
         logIn.clipsToBounds = true
-        logIn.setTitle("Вход", for: .normal)
+        logIn.setTitle(LocalizedService.getText(key: .logIn), for: .normal)
         //        logIn.titleLabel?.textColor = .white
         logIn.layer.shadowColor = UIColor.black.cgColor
         logIn.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -104,7 +104,7 @@ class LogInViewController: UIViewController {
         regIn.translatesAutoresizingMaskIntoConstraints = false
         regIn.layer.cornerRadius = 10
         regIn.clipsToBounds = true
-        regIn.setTitle("Регистрация", for: .normal)
+        regIn.setTitle(LocalizedService.getText(key: .regIn), for: .normal)
         //        regIn.titleLabel?.textColor = .white
         regIn.layer.shadowColor = UIColor.black.cgColor
         regIn.layer.shadowOffset = CGSize(width: 4, height: 4)

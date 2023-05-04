@@ -19,7 +19,7 @@ class PostViewController: UIViewController {
         
         super.viewDidLoad()
         
-        let infoBarButtonItem = UIBarButtonItem(title: "Инфо", style: .plain, target: self, action: #selector(showInfo))
+        let infoBarButtonItem = UIBarButtonItem(title: LocalizedService.getText(key: .info), style: .plain, target: self, action: #selector(showInfo))
         self.navigationItem.rightBarButtonItem  = infoBarButtonItem
       
         view.backgroundColor = UIColor.lightGray

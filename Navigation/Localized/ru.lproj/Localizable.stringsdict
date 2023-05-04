@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>favorites</key>
+	<string>Избранное</string>
+	<key>feed</key>
+	<string>Новости</string>
+	<key>regIn</key>
+	<string>Регистрация</string>
+	<key>insertNewStatus</key>
+	<string>Введите новый статус</string>
+	<key>insertLogIn</key>
+	<string>Введите имя пользователя</string>
+	<key>sputnikView</key>
+	<string>Вид со спутника</string>
+	<key>photoGallery</key>
+	<string>Фотогалерея</string>
+	<key>likes</key>
+	<string>Лайки</string>
+	<key>profile</key>
+	<string>Профиль</string>
+	<key>insertPassword</key>
+	<string>Введите пароль</string>
+	<key>changeStatus</key>
+	<string>Сменить статус</string>
+	<key>photos</key>
+	<string>Фото</string>
+	<key>views</key>
+	<string>Просмотры</string>
+	<key>maps</key>
+	<string>Карты</string>
+	<key>schematicView</key>
+	<string>Схематичный вид</string>
+	<key>logIn</key>
+	<string>Вход</string>
+	<key>StringKey</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string></string>
+		</dict>
+	</dict>
+</dict>
+</plist>

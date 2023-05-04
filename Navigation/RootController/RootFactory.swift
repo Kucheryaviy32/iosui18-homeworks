@@ -37,7 +37,7 @@ final class RootFactory {
             feedViewController.view.backgroundColor = UIColor.white
             let feedNavigationController = UINavigationController(rootViewController: feedViewController)
             
-            feedNavigationController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
+            feedNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .feed), image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
             feedNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
             feedNavigationController.navigationBar.barTintColor = UIColor.white
             feedNavigationController.navigationBar.standardAppearance = appearance;
@@ -50,7 +50,7 @@ final class RootFactory {
                 let profileViewController = ProfileViewController(coordinator: coordinator as! ProfileCoordinator, userService: userData.userService, name: userData.name)
                 let profileNavigationController = UINavigationController(rootViewController: profileViewController)
                 
-                profileNavigationController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
+                profileNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .profile), image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
                 profileNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
                 profileNavigationController.navigationBar.barTintColor = UIColor.white
                 profileNavigationController.navigationBar.standardAppearance = appearance;
@@ -63,7 +63,7 @@ final class RootFactory {
             let favoriteViewController = Favorite(coordinator: coordinator as! FavoriteCoordinator, dbCoordinator: dataBaseCoordinator)
             favoriteViewController.view.backgroundColor = UIColor.white
             let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
-            favoriteNavigationController.tabBarItem = UITabBarItem(title: "Избранное", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
+            favoriteNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .favorite), image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
             favoriteNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
             favoriteNavigationController.navigationBar.barTintColor = UIColor.white
             favoriteNavigationController.navigationBar.standardAppearance = appearance;
@@ -77,7 +77,7 @@ final class RootFactory {
             mapViewController.view.backgroundColor = UIColor.white
             let mapNavigationController = UINavigationController(rootViewController: mapViewController)
             
-            mapNavigationController.tabBarItem = UITabBarItem(title: "Карта", image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
+            mapNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .maps), image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
             mapNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
             mapNavigationController.navigationBar.barTintColor = UIColor.white
             mapNavigationController.navigationBar.standardAppearance = appearance;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>favorite</key>
+	<string>Favorites</string>
+	<key>feed</key>
+	<string>Feed</string>
+	<key>sputnikView</key>
+	<string>Sputnik view</string>
+	<key>schematicView</key>
+	<string>Schematic view</string>
+	<key>maps</key>
+	<string>Maps</string>
+	<key>insertLogIn</key>
+	<string>Insert login</string>
+	<key>insertPassword</key>
+	<string>Insert password</string>
+	<key>logIn</key>
+	<string>Log In</string>
+	<key>regIn</key>
+	<string>Registration</string>
+	<key>insertNewStatus</key>
+	<string>Insert new status</string>
+	<key>changeStatus</key>
+	<string>Change status</string>
+	<key>likes</key>
+	<string>Likes</string>
+	<key>views</key>
+	<string>Views</string>
+	<key>photos</key>
+	<string>Photos</string>
+	<key>photoGallery</key>
+	<string>Photo gallery</string>
+	<key>profile</key>
+	<string>Profile</string>
+	<key>StringKey</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string></string>
+		</dict>
+	</dict>
+</dict>
+</plist>

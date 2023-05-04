@@ -87,8 +87,8 @@ class PostTableViewCell: UITableViewCell {
         contentAuthorLabel.text = post.author
         contentImageView.image = post.image
         contentDescriptionLabel.text = post.description
-        contentLikesLabel.text = "Лайки: \(String(post.likes))"
-        contentViewsLabel.text = "Просмотры: \(String(post.views))"
+        contentLikesLabel.text = LocalizedService.getText(key: .likes) + "\(String(post.likes))"
+        contentViewsLabel.text = LocalizedService.getText(key: .views) + "\(String(post.views))"
     }
     
     private func layout() {

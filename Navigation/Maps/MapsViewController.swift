@@ -44,7 +44,7 @@ class MapsViewController: UIViewController {
     lazy var hybridMKViewButton: UIButton = {
         let button = UIButton()
         button.toAutoLayout()
-        button.setTitle("Вид со спутника", for: .normal)
+        button.setTitle(LocalizedService.getText(key: .sputnikView), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(changeMKMapView), for: .touchUpInside)
@@ -53,7 +53,7 @@ class MapsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Карты"
+        title = LocalizedService.getText(key: .maps)
         view.addSubviews(mapView, button, hybridMKViewButton)
         mapView.delegate = self
         
@@ -114,10 +114,10 @@ class MapsViewController: UIViewController {
     
     @objc func changeMKMapView() {
         if mapView.mapType == .standard {
-            hybridMKViewButton.setTitle("Схематичный вид", for: .normal)
+            hybridMKViewButton.setTitle(LocalizedService.getText(key: .schematicView), for: .normal)
             mapView.mapType = .hybrid
         } else {
-            hybridMKViewButton.setTitle("Вид со спутника", for: .normal)
+            hybridMKViewButton.setTitle(LocalizedService.getText(key: .sputnikView), for: .normal)
             mapView.mapType = .standard
         }
     }

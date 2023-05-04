@@ -55,7 +55,7 @@ import UIKit
      override func viewDidLoad() {
          super.viewDidLoad()
 
-         title = "Избранное"
+         title = LocalizedService.getText(key: .favorite)
 
          view.addSubview(collectionView)
          collectionView.register(FavoritePostCollectionViewCell.self, forCellWithReuseIdentifier: FavoritePostCollectionViewCell.identifire)
