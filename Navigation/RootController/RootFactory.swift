@@ -27,19 +27,19 @@ final class RootFactory {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.white
+        appearance.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         
         switch state {
         case .feed:
             let dataBaseCoordinator = CreateDataBase()
             let viewModel = FeedModel(coordinator: coordinator as! FeedCoordinator)
             let feedViewController = FeedViewController(coordinator: coordinator as! FeedCoordinator, model: viewModel, dbCoordinator: dataBaseCoordinator)
-            feedViewController.view.backgroundColor = UIColor.white
+            feedViewController.view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
             let feedNavigationController = UINavigationController(rootViewController: feedViewController)
             
             feedNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .feed), image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
             feedNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
-            feedNavigationController.navigationBar.barTintColor = UIColor.white
+            feedNavigationController.navigationBar.barTintColor = .createColor(lightMode: .white, darkMode: .black)
             feedNavigationController.navigationBar.standardAppearance = appearance;
             feedNavigationController.navigationBar.scrollEdgeAppearance = feedNavigationController.navigationBar.standardAppearance
             return feedNavigationController
@@ -52,7 +52,7 @@ final class RootFactory {
                 
                 profileNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .profile), image: UIImage(named: "profile_icon"), selectedImage: UIImage(named: "profile_icon"))
                 profileNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
-                profileNavigationController.navigationBar.barTintColor = UIColor.white
+                profileNavigationController.navigationBar.barTintColor = .createColor(lightMode: .white, darkMode: .black)
                 profileNavigationController.navigationBar.standardAppearance = appearance;
                 profileNavigationController.navigationBar.scrollEdgeAppearance = profileNavigationController.navigationBar.standardAppearance
                 return profileNavigationController
@@ -61,11 +61,11 @@ final class RootFactory {
         case .favorite:
             let dataBaseCoordinator = CreateDataBase()
             let favoriteViewController = Favorite(coordinator: coordinator as! FavoriteCoordinator, dbCoordinator: dataBaseCoordinator)
-            favoriteViewController.view.backgroundColor = UIColor.white
+            favoriteViewController.view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
             let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
             favoriteNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .favorite), image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
             favoriteNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
-            favoriteNavigationController.navigationBar.barTintColor = UIColor.white
+            favoriteNavigationController.navigationBar.barTintColor = .createColor(lightMode: .white, darkMode: .black)
             favoriteNavigationController.navigationBar.standardAppearance = appearance;
             favoriteNavigationController.navigationBar.scrollEdgeAppearance = favoriteNavigationController.navigationBar.standardAppearance
             return favoriteNavigationController
@@ -74,12 +74,12 @@ final class RootFactory {
         case .map:
             
             let mapViewController = MapsViewController()
-            mapViewController.view.backgroundColor = UIColor.white
+            mapViewController.view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
             let mapNavigationController = UINavigationController(rootViewController: mapViewController)
             
             mapNavigationController.tabBarItem = UITabBarItem(title: LocalizedService.getText(key: .maps), image: UIImage(named: "feed_icon"), selectedImage: UIImage(named: "feed_icon"))
             mapNavigationController.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.black]
-            mapNavigationController.navigationBar.barTintColor = UIColor.white
+            mapNavigationController.navigationBar.barTintColor = .createColor(lightMode: .white, darkMode: .black)
             mapNavigationController.navigationBar.standardAppearance = appearance;
             mapNavigationController.navigationBar.scrollEdgeAppearance = mapNavigationController.navigationBar.standardAppearance
             return mapNavigationController

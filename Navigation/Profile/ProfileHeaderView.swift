@@ -18,7 +18,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         let userNameLabel = UILabel()
         userNameLabel.text = "Пользователь не найден"
         userNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        userNameLabel.textColor = .black
+        userNameLabel.textColor = .createColor(lightMode: .black, darkMode: .white)
+
         userNameLabel.clipsToBounds = true
         return userNameLabel
     }()
@@ -33,7 +34,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     lazy var statusTextField : UITextField = {
         let statusTextField = UITextField()
-        statusTextField.backgroundColor = .white
+        statusTextField.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         statusTextField.placeholder = LocalizedService.getText(key: .insertNewStatus)
         statusTextField.textAlignment = NSTextAlignment.center
         statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
@@ -65,7 +66,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         
         super.init(reuseIdentifier: reuseIdentifier)
-        
         addSubview(profileImageView)
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         

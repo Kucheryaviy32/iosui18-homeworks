@@ -33,11 +33,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-#if DEBUG
-        profileTableView.backgroundColor = .systemRed
-#else
-        profileTableView.backgroundColor = .white
-#endif
+
+        profileTableView.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         let exitBarButton = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(exitToProfile))
         navigationItem.rightBarButtonItem  = exitBarButton
         

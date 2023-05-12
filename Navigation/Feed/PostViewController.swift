@@ -22,7 +22,8 @@ class PostViewController: UIViewController {
         let infoBarButtonItem = UIBarButtonItem(title: LocalizedService.getText(key: .info), style: .plain, target: self, action: #selector(showInfo))
         self.navigationItem.rightBarButtonItem  = infoBarButtonItem
       
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
+
         
         title = post.title
         

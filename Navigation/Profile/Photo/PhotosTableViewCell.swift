@@ -28,7 +28,7 @@ class PhotosTableViewCell: UITableViewCell {
         stackView.spacing = 8
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
-        stackView.backgroundColor = .white
+        stackView.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         
         return stackView
         
@@ -38,7 +38,7 @@ class PhotosTableViewCell: UITableViewCell {
         let photosLabel = UILabel()
         photosLabel.text = LocalizedService.getText(key: .photos)
         photosLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        photosLabel.textColor = .black
+        photosLabel.textColor = .createColor(lightMode: .black, darkMode: .white)
         photosLabel.translatesAutoresizingMaskIntoConstraints = false
         return photosLabel
     }()

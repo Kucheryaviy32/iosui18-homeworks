@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
-        
+        self.window?.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
+
         FirebaseApp.configure()
         
         return true

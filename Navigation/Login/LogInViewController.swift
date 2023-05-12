@@ -15,11 +15,13 @@ class LogInViewController: UIViewController {
     
     lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         return scrollView
     }()
     
     lazy var logInView : UIView = {
         let logInView = UIView()
+//        logInView.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         return logInView
     }()
     
@@ -35,7 +37,7 @@ class LogInViewController: UIViewController {
         logInStackView.layer.borderColor = UIColor.lightGray.cgColor
         logInStackView.layer.borderWidth = 0.5
         logInStackView.layer.cornerRadius = 10
-        logInStackView.backgroundColor = .systemGray6
+        logInStackView.backgroundColor = .createColor(lightMode: .white, darkMode: .systemGray6)
         logInStackView.tintColor = .lightGray
         logInStackView.layer.masksToBounds = true
         return logInStackView
@@ -48,7 +50,7 @@ class LogInViewController: UIViewController {
         loginTextField.text = "siv@mail.ru"
                 #else
                 #endif
-        loginTextField.textColor = .black
+        loginTextField.textColor = .createColor(lightMode: .black, darkMode: .white)
         loginTextField.font = .systemFont(ofSize: 16, weight: .regular)
         loginTextField.autocapitalizationType = .none
         loginTextField.layer.borderWidth = 0.25
@@ -63,7 +65,7 @@ class LogInViewController: UIViewController {
     lazy var passwordTextField : UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.placeholder = LocalizedService.getText(key: .insertPassword)
-        passwordTextField.textColor = .black
+        passwordTextField.textColor = .createColor(lightMode: .black, darkMode: .white)
         passwordTextField.font = .systemFont(ofSize: 16, weight: .regular)
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
@@ -156,7 +158,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .createColor(lightMode: .white, darkMode: .darkGray)
         self.navigationController?.navigationBar.isHidden = true
         
         view.addSubview(scrollView)

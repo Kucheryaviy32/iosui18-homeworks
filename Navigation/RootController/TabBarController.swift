@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class TabBarController: UITabBarController {
-    
     var coordinator: UITabBarCoordinator?
     var authenticationData: (userService: UserService, name: String)?
     //    var timer: Timer? = nil
@@ -21,30 +20,29 @@ class TabBarController: UITabBarController {
     }
     
     init(coordinator: UITabBarCoordinator, activView: UITabBarCoordinator.action, authenticationData: (userService: UserService, name: String)?) {
-        
         self.coordinator = coordinator
         self.activView = activView
         self.authenticationData = authenticationData
-        
         super.init(nibName: nil, bundle: nil)
         
         switch self.activView {
         case .autorization:
-            
+            self.tabBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
             let logInViewController = LogInViewController() {(authenticationData: (userService: UserService, name: String)) in
                 self.authenticationData = authenticationData
                 self.activView = .allApp
             }
-            logInViewController.view.backgroundColor = .white
-            
             let loginFactory = MyLoginFactory()
             logInViewController.delegate = loginFactory.createLoginInspector()
             
             let loginNavigationController = UINavigationController(rootViewController: logInViewController)
             self.viewControllers = [loginNavigationController]
+            self.tabBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
+
             
         case .allApp:
             do {
+                self.tabBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
                 let feedCoordinator = FeedCoordinator()
                 let feedNavigationController = try feedCoordinator.Start()
                 let profileCoordinator = ProfileCoordinator(data: authenticationData!){
@@ -81,7 +79,8 @@ class TabBarController: UITabBarController {
                 self.authenticationData = authenticationData
                 self.activView = .allApp
             }
-            logInViewController.view.backgroundColor = .white
+            logInViewController.view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
+
             
             let loginFactory = MyLoginFactory()
             logInViewController.delegate = loginFactory.createLoginInspector()
